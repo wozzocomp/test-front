@@ -1,0 +1,124 @@
+@import 'styles/constants.scss';
+
+.loading-container {
+  height: 100px;
+  width: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px auto;
+
+  > div {
+    border: 1px solid $gray-lighter;
+    border-radius: 50%;
+    position: absolute;
+    transition: linear all $transition-slow;
+  }
+
+  .loader {
+    width: 80px;
+    height: 80px;
+    border-top: 3px solid $primary;
+    animation: spin 0.8s linear infinite;
+  }
+
+  .loader2 {
+    width: 60px;
+    height: 60px;
+    border-right: $size-xs solid rgba($primary-light, 0.8);
+    animation: spin-two 0.85s linear infinite;
+  }
+
+  .loader3 {
+    width: 40px;
+    height: 40px;
+    border-left: 1px solid rgba($primary, 0.5);
+    animation: spin-three 0.9s linear infinite;
+  }
+
+  img {
+    height: 20px;
+    width: auto;
+    animation: scaleZeroToOne 1s linear infinite;
+  }
+}
+.loading-container:hover {
+  > div {
+    border-radius: 5%;
+  }
+  .loader {
+    border-left: 40px solid transparent;
+    border-top: 80px solid $primary;
+    border-right: 40px solid transparent;
+  }
+  .loader2 {
+    border-top: 30px solid transparent;
+    border-right: 60px solid rgba($primary-light, 0.8);
+    border-bottom: 30px solid transparent;
+  }
+  .loader3 {
+    border-top: 20px solid transparent;
+    border-left: 40px solid rgba($primary, 0.5);
+    border-bottom: 20px solid transparent;
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+    border-top-color: $primary;
+  }
+  25% {
+    border-top-color: $secondary;
+  }
+  50% {
+    border-top-color: $primary;
+  }
+  75% {
+    border-top-color: $secondary;
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spin-two {
+  0% {
+    transform: rotate(0deg);
+    border-right-color: rgba($primary-light, 0.8);
+  }
+  15% {
+    border-right-color: rgba($secondary-light, 0.8);
+  }
+  40% {
+    border-right-color: rgba($primary-light, 0.8);
+  }
+  65% {
+    border-right-color: rgba($secondary-light, 0.8);
+  }
+  90% {
+    border-right-color: rgba($primary-light, 0.8);
+  }
+  100% {
+    transform: rotate(-360deg);
+  }
+}
+
+@keyframes spin-three {
+  0% {
+    transform: rotate(0deg);
+    border-left-color: rgba($secondary, 0.5);
+  }
+  25% {
+    border-left-color: rgba($primary, 0.5);
+  }
+  50% {
+    border-left-color: rgba($secondary, 0.5);
+  }
+  75% {
+    border-left-color: rgba($primary, 0.5);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

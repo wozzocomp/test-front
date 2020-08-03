@@ -1,0 +1,9 @@
+@import 'styles/constants.scss';
+
+#backoffice-users-page {
+  .page-body {
+    max-width: $content-max-width;
+    display: flex;
+    flex-wrap: wrap;
+  }
+}

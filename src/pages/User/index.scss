@@ -1,0 +1,36 @@
+@import 'styles/constants.scss';
+
+#user-container {
+  background-color: $background-gray;
+  min-height: 100vh;
+
+  > .page-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    > * {
+      max-width: $content-max-width;
+      width: calc(100% - 32px);
+      padding: $size-lg;
+      border-radius: $size-md;
+
+      form {
+        width: 100%;
+      }
+
+      .user-info-container {
+        display: flex;
+      }
+
+      .user-edit-btns {
+        display: flex;
+        flex-direction: row-reverse;
+        margin-top: $size-lg;
+
+        > *:not(:last-child) {
+          margin-left: $size-lg;
+        }
+      }
+    }
+  }
+}

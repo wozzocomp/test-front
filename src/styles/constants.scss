@@ -1,0 +1,90 @@
+// ***********
+// COLORS
+// ***********
+// Primary
+$primary-darker: #0f0e3f;
+$primary-dark: #1f1d5b;
+$primary: #2a276e;
+$primary-light: #6a689a;
+$primary-lighter: #bfbed4;
+
+// Secondary
+$secondary-darker: #be130f;
+$secondary-dark: #cd241f;
+$secondary: #d7302a;
+$secondary-light: #e36e6a;
+$secondary-lighter: #f3c1bf;
+
+// Accent
+$tertiary-darker: #0a2318;
+$tertiary-dark: #173b2c;
+$tertiary: #1f4b3a;
+$tertiary-light: #628175;
+$tertiary-lighter: #bcc9c4;
+
+// Accent
+$accent-darker: #ffec28;
+$accent-dark: #fff141;
+$accent: #fff452;
+$accent-light: #fff786;
+$accent-lighter: #fffccb;
+
+// Gray
+$gray: #888888;
+$gray-light: #c0c0c0;
+$gray-lighter: #d8d8d8;
+$gray-border: 1px solid rgba($gray-light, 0.5);
+
+// B&W
+$background-gray: #f4f4f4;
+$white: #ffffff;
+$black: #282828;
+
+// Error, info...
+$color-error: #db341a;
+$color-error-border: #ff745e;
+$color-warning: #e8b125;
+$color-warning-border: #ffef5e;
+$color-info: $primary;
+$color-info-border: $primary-light;
+$color-success: #699c1c;
+$color-success-border: #acde5b;
+
+// ***********
+// PADDING, MARGIN AND RADIUS
+// ***********
+$size-xs: 2px;
+$size-sm: 4px;
+$size-md: 8px;
+$size-lg: 16px;
+$size-xl: 32px;
+$size-xxl: 64px;
+
+$content-max-width: 1500px;
+
+// ***********
+// TRANSITIONS
+// ***********
+$transition-slow: 0.5s;
+$transition-mid: 0.25s;
+$transition-fast: 0.1s;
+
+// ***********
+// FONT
+// ***********
+$font-xs: 14px;
+$font-sm: 16px;
+$font-md: 20px;
+$font-lg: 24px;
+$font-xl: 32px;
+$font-subtitle: 40px;
+$font-title: 50px;
+$bold: 500;
+
+// ***********
+// SCREEN SIZES
+// ***********
+$screen-sm: 576px;
+$screen-md: 768px;
+$screen-lg: 992px;
+$screen-xl: 1200px;

@@ -1,0 +1,63 @@
+@import 'styles/constants.scss';
+
+.faq {
+  display: flex;
+  flex-direction: column;
+  background-color: $white;
+  border-radius: $size-sm;
+
+  .faq-header {
+    padding: $size-sm 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+
+    span {
+      padding: $size-sm $size-lg;
+      font-size: $font-lg;
+    }
+    .btn {
+      border: 0;
+      height: 100%;
+      i {
+        transition: linear all $transition-fast;
+      }
+    }
+  }
+  .faq-body {
+    max-height: 0;
+    opacity: 0;
+    font-size: 0;
+    transition: linear all $transition-fast;
+    width: 100%;
+    padding: 0 $size-lg;
+    border-top: 0 solid $gray-lighter;
+
+    p {
+      margin: 0;
+      transition: linear all $transition-fast;
+      font-weight: 200;
+    }
+  }
+}
+.faq.expanded {
+  .faq-header {
+    .btn {
+      i {
+        transform: rotate(180deg);
+      }
+    }
+  }
+  .faq-body {
+    max-height: 999px;
+    opacity: 1;
+    font-size: $font-lg;
+    padding: $size-sm $size-lg;
+    border-top-width: 1px;
+
+    p {
+      margin: $size-lg 0;
+    }
+  }
+}

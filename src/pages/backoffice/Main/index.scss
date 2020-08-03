@@ -1,0 +1,31 @@
+@import 'styles/constants.scss';
+
+#backoffice-main-page {
+  .page-header {
+    background-size: unset;
+    background-position: center right;
+  }
+
+  .page-body {
+    max-width: $content-max-width;
+    display: flex;
+    flex-wrap: wrap;
+
+    > .backoffice-card {
+      flex: 0 50%;
+      padding: $size-lg;
+    }
+  }
+}
+
+@media screen and (max-width: $screen-lg) {
+  #backoffice-main-page {
+    .page-body {
+      flex-direction: column;
+
+      > .backoffice-card {
+        flex: 1;
+      }
+    }
+  }
+}

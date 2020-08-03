@@ -1,0 +1,19 @@
+{
+  "createdAt": "Fecha",
+  "deleteKo": "Ha habido un error al eliminar el error",
+  "deleteOk": "El error se ha eliminado correctamente",
+  "deleteMany": "Borrar seleccionados",
+  "deleteManyKo": "Ha habido un error al eliminar los errores",
+  "deleteManyOk": "Los errores se han eliminado correctamente",
+  "deleteManySure": "¿Estás seguro que quieres eliminar",
+  "error": "Error",
+  "errors": "Errores",
+  "login": {
+    "noToken": "El enlace es inválido.",
+    "noUser": "El usuario se ha eliminado. Por favor, vuelva a registrarse.",
+    "unknown": "Se ha producido un error. Por favor, verifique que el enlace es correcto. Si el error continua, vuelva a solicitar el cambio de contraseña."
+  },
+  "info": "Info",
+  "maxLengthDate": "El máximo periodo de búsqueda es de dos meses.",
+  "noErrorsFound": "No se ha encontrado ningún error"
+}

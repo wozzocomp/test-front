@@ -1,0 +1,324 @@
+@import './constants.scss';
+
+body {
+  font-family: 'FuturaPT', sans-serif;
+  font-size: $font-md;
+  margin: 0;
+  color: $black;
+  -webkit-font-smoothing: subpixel-antialiased;
+  -moz-osx-font-smoothing: auto;
+}
+*,
+input,
+textarea {
+  font-family: 'FuturaPT', sans-serif;
+}
+
+.shadow {
+  -webkit-box-shadow: 0px 0 $size-lg $size-sm rgba($gray-light, 0.3);
+  -moz-box-shadow: 0px 0 $size-lg $size-sm rgba($gray-light, 0.3);
+  box-shadow: 0px 0 $size-lg $size-sm rgba($gray-light, 0.3);
+}
+
+// For google map address component
+.generic-backoffice {
+  background: transparent;
+  h1 {
+    display: none;
+  }
+  .generic-backoffice-body {
+    width: 100%;
+
+    .generic-backoffice-table {
+      .wozzo-table {
+        tbody {
+          tr {
+            td {
+              text-align: center;
+              i.fa-check {
+                color: $color-success;
+              }
+              i.fa-times {
+                color: $color-error;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// Colors styles
+// PRIMARY
+.primary-bg {
+  background-color: $primary;
+}
+.primary-border {
+  border-color: $primary;
+}
+.primary-color,
+body a.primary-color:hover {
+  color: $primary;
+}
+.primary-light-bg {
+  background-color: $primary-light;
+}
+.primary-light-border {
+  border-color: $primary-light;
+}
+.primary-light-color,
+body a.primary-light-color:hover {
+  color: $primary-light;
+}
+.primary-lighter-bg {
+  background-color: $primary-lighter;
+}
+.primary-lighter-border {
+  border-color: $primary-lighter;
+}
+.primary-lighter-color,
+body a.primary-lighter-color:hover {
+  color: $primary-lighter;
+}
+.primary-dark-bg {
+  background-color: $primary-dark;
+}
+.primary-dark-border {
+  border-color: $primary-dark;
+}
+.primary-dark-color,
+body a.primary-dark-color:hover {
+  color: $primary-dark;
+}
+.primary-darker-bg {
+  background-color: $primary-darker;
+}
+.primary-darker-border {
+  border-color: $primary-darker;
+}
+.primary-darker-color,
+body a.primary-darker-color:hover {
+  color: $primary-darker;
+}
+// SECONDARY
+.secondary-bg {
+  background-color: $secondary;
+}
+.secondary-border {
+  border-color: $secondary;
+}
+.secondary-color,
+body a.secondary-color:hover {
+  color: $secondary;
+}
+.secondary-light-bg {
+  background-color: $secondary-light;
+}
+.secondary-light-border {
+  border-color: $secondary-light;
+}
+.secondary-light-color,
+body a.secondary-light-color:hover {
+  color: $secondary-light;
+}
+.secondary-lighter-bg {
+  background-color: $secondary-lighter;
+}
+.secondary-lighter-border {
+  border-color: $secondary-lighter;
+}
+.secondary-lighter-color,
+body a.secondary-lighter-color:hover {
+  color: $secondary-lighter;
+}
+.secondary-dark-bg {
+  background-color: $secondary-dark;
+}
+.secondary-dark-border {
+  border-color: $secondary-dark;
+}
+.secondary-dark-color,
+body a.secondary-dark-color:hover {
+  color: $secondary-dark;
+}
+.secondary-darker-bg {
+  background-color: $secondary-darker;
+}
+.secondary-darker-border {
+  border-color: $secondary-darker;
+}
+.secondary-darker-color,
+body a.secondary-darker-color:hover {
+  color: $secondary-darker;
+}
+// TERTIARY
+.tertiary-bg {
+  background-color: $tertiary;
+}
+.tertiary-border {
+  border-color: $tertiary;
+}
+.tertiary-color,
+body a.tertiary-color:hover {
+  color: $tertiary;
+}
+.tertiary-light-bg {
+  background-color: $tertiary-light;
+}
+.tertiary-light-border {
+  border-color: $tertiary-light;
+}
+.tertiary-light-color,
+body a.tertiary-light-color:hover {
+  color: $tertiary-light;
+}
+.tertiary-lighter-bg {
+  background-color: $tertiary-lighter;
+}
+.tertiary-lighter-border {
+  border-color: $tertiary-lighter;
+}
+.tertiary-lighter-color,
+body a.tertiary-lighter-color:hover {
+  color: $tertiary-lighter;
+}
+.tertiary-dark-bg {
+  background-color: $tertiary-dark;
+}
+.tertiary-dark-border {
+  border-color: $tertiary-dark;
+}
+.tertiary-dark-color,
+body a.tertiary-dark-color:hover {
+  color: $tertiary-dark;
+}
+.tertiary-darker-bg {
+  background-color: $tertiary-darker;
+}
+.tertiary-darker-border {
+  border-color: $tertiary-darker;
+}
+.tertiary-darker-color,
+body a.tertiary-darker-color:hover {
+  color: $tertiary-darker;
+}
+// ACCENT
+.accent-bg {
+  background-color: $accent;
+}
+.accent-border {
+  border-color: $accent;
+}
+.accent-color,
+body a.accent-color:hover {
+  color: $accent;
+}
+.accent-light-bg {
+  background-color: $accent-light;
+}
+.accent-light-border {
+  border-color: $accent-light;
+}
+.accent-light-color,
+body a.accent-light-color:hover {
+  color: $accent-light;
+}
+.accent-lighter-bg {
+  background-color: $accent-lighter;
+}
+.accent-lighter-border {
+  border-color: $accent-lighter;
+}
+.accent-lighter-color,
+body a.accent-lighter-color:hover {
+  color: $accent-lighter;
+}
+.accent-dark-bg {
+  background-color: $accent-dark;
+}
+.accent-dark-border {
+  border-color: $accent-dark;
+}
+.accent-dark-color,
+body a.accent-dark-color:hover {
+  color: $accent-dark;
+}
+.accent-darker-bg {
+  background-color: $accent-darker;
+}
+.accent-darker-border {
+  border-color: $accent-darker;
+}
+.accent-darker-color,
+body a.accent-darker-color:hover {
+  color: $accent-darker;
+}
+// GRAY
+.gray-bg {
+  background-color: $gray;
+}
+.gray-border {
+  border-color: $gray;
+}
+.gray-color,
+body a.gray-color:hover {
+  color: $gray;
+}
+// WHITE
+.white-bg {
+  background-color: $white;
+}
+.white-border {
+  border-color: $white;
+}
+.white-color,
+body a.white-color:hover {
+  color: $white;
+}
+// BLACK
+.black-bg {
+  background-color: $black;
+}
+.black-border {
+  border-color: $black;
+}
+.black-color,
+body a.black-color:hover {
+  color: $black;
+}
+// WHITE
+.white-bg {
+  background-color: $white;
+}
+.white-border {
+  border-color: $white;
+}
+.white-color,
+body a.white-color:hover {
+  color: $white;
+}
+// TRANSPARENT
+.transparent-bg {
+  background-color: transparent;
+}
+.transparent-border {
+  border-color: transparent;
+}
+.transparent-color,
+body a.transparent-color:hover {
+  color: transparent;
+}
+
+// TABLE
+.wozzo-table-container {
+  .wozzo-table-overflow {
+    .wozzo-table {
+      tbody {
+        tr:nth-child(even) {
+          background-color: rgba($primary-light, 0.1);
+        }
+      }
+    }
+  }
+}

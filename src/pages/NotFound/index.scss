@@ -1,0 +1,117 @@
+@import 'styles/constants.scss';
+
+#not-found-container {
+  > .page-body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $background-gray;
+    min-height: 70vh;
+    padding: $size-xl;
+
+    .not-found {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: $white;
+      padding: $size-xl;
+      border-radius: $size-sm;
+      max-width: 1200px;
+
+      img {
+        max-width: 500px;
+        margin-right: $size-xl;
+      }
+
+      > div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        h1 {
+          margin: 0;
+          font-size: 50px;
+        }
+
+        > p {
+          font-size: $font-title;
+          text-align: center;
+        }
+
+        > div {
+          width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: space-around;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $screen-xl) {
+  #not-found-container {
+    > .page-body {
+      .not-found {
+        img {
+          max-width: 400px;
+        }
+
+        > div {
+          h1 {
+            font-size: $font-title;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $screen-lg) {
+  #not-found-container {
+    > .page-body {
+      .not-found {
+        flex-direction: column;
+        img {
+          max-width: 300px;
+          margin-right: 0;
+        }
+
+        > div {
+          h1 {
+            font-size: $font-xl;
+          }
+
+          > p {
+            font-size: $font-md;
+          }
+
+          > div {
+            flex-direction: column;
+
+            .btn:not(:last-child) {
+              margin: $size-lg;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $screen-md) {
+  #not-found-container {
+    > .page-body {
+      .not-found {
+        img {
+          max-width: 200px;
+        }
+        > div {
+          > p {
+            font-size: $font-md;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,47 @@
+/** Regular font */
+@font-face {
+  font-family: 'FuturaPT';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../assets/font/FuturaPT-Medium.ttf') format('truetype');
+}
+
+/** Bold font */
+@font-face {
+  font-family: 'FuturaPT';
+  font-style: normal;
+  font-weight: 500;
+  src: url('../assets/font/FuturaPT-Book.ttf') format('truetype');
+}
+
+/** Bold font */
+@font-face {
+  font-family: 'FuturaPT';
+  font-style: normal;
+  font-weight: bold;
+  src: url('../assets/font/FuturaPT-Bold.ttf') format('truetype');
+}
+
+/** Demi font */
+@font-face {
+  font-family: 'FuturaPT';
+  font-style: normal;
+  font-weight: 600;
+  src: url('../assets/font/FuturaPT-Demi.ttf') format('truetype');
+}
+
+/** Light font */
+@font-face {
+  font-family: 'FuturaPT';
+  font-style: normal;
+  font-weight: 200;
+  src: url('../assets/font/FuturaPT-Light.ttf') format('truetype');
+}
+
+/** Light font */
+@font-face {
+  font-family: 'FuturaPT';
+  font-style: normal;
+  font-weight: 300;
+  src: url('../assets/font/FuturaPTCond-Medium.ttf') format('truetype');
+}

@@ -1,0 +1,245 @@
+@import './constants.scss';
+
+// ********** FADE IN
+.fadein {
+  -webkit-animation: fadein $transition-slow; /* Safari, Chrome and Opera > 12.1 */
+  -moz-animation: fadein $transition-slow; /* Firefox < 16 */
+  -ms-animation: fadein $transition-slow; /* Internet Explorer */
+  -o-animation: fadein $transition-slow; /* Opera < 12.1 */
+  animation: fadein $transition-slow;
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+/* Firefox < 16 */
+@-moz-keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+/* Safari, Chrome and Opera > 12.1 */
+@-webkit-keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+/* Internet Explorer */
+@-ms-keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+/* Opera < 12.1 */
+@-o-keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+// ********** SHINE
+// ********** SHINE *************
+.shine {
+  -webkit-animation: shine 1.5s infinite; /* Safari, Chrome and Opera > 12.1 */
+  -moz-animation: shine 1.5s infinite; /* Firefox < 16 */
+  -ms-animation: shine 1.5s infinite; /* Internet Explorer */
+  -o-animation: shine 1.5s infinite; /* Opera < 12.1 */
+  animation: shine 1.5s infinite;
+}
+@keyframes shine {
+  0% {
+    opacity: 1;
+  }
+  10% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+/* Firefox < 16 */
+@-moz-keyframes shine {
+  0% {
+    opacity: 1;
+  }
+  10% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+/* Safari, Chrome and Opera > 12.1 */
+@-webkit-keyframes shine {
+  0% {
+    opacity: 1;
+  }
+  10% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+/* Internet Explorer */
+@-ms-keyframes shine {
+  0% {
+    opacity: 1;
+  }
+  10% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+/* Opera < 12.1 */
+@-o-keyframes shine {
+  0% {
+    opacity: 1;
+  }
+  10% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+// ************* SCALING
+@keyframes scaleZeroToOne {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+
+// ************* Rotate
+@keyframes rotate {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+// ************* Bounce
+@keyframes bounceEffect {
+  0% {
+    transform: translateY(0px);
+  }
+  1% {
+    transform: translateY(-1%);
+  }
+  25% {
+    transform: translateY(-20%);
+  }
+  40% {
+    transform: translateY(-24%);
+  }
+  50% {
+    transform: translateY(-25%);
+  }
+  60% {
+    transform: translateY(-24%);
+  }
+  75% {
+    transform: translateY(-20%);
+  }
+  99% {
+    transform: translateY(-1%);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+@keyframes bounceShadow {
+  0% {
+    height: 1px;
+    width: 25%;
+    background-color: rgba($black, 0.1);
+  }
+  25% {
+    height: 3px;
+    width: 33%;
+    background-color: rgba($black, 0.2);
+  }
+  40% {
+    height: 4px;
+    width: 45%;
+    background-color: rgba($black, 0.4);
+  }
+  50% {
+    height: 6px;
+    width: 50%;
+    background-color: rgba($black, 0.5);
+  }
+  60% {
+    height: 4px;
+    width: 45%;
+    background-color: rgba($black, 0.4);
+  }
+  75% {
+    height: 3px;
+    width: 33%;
+    background-color: rgba($black, 0.2);
+  }
+  100% {
+    height: 1px;
+    width: 25%;
+    background-color: rgba($black, 0.1);
+  }
+}

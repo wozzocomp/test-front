@@ -1,0 +1,209 @@
+@import 'styles/constants.scss';
+
+.main-sidebar {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  background-color: $primary;
+  width: 80px;
+  transition: ease-in-out width $transition-mid;
+  z-index: 3;
+  -webkit-box-shadow: $size-xs 0 $size-sm $size-xs rgba($black, 0.2);
+  -moz-box-shadow: $size-xs 0 $size-sm $size-xs rgba($black, 0.2);
+  box-shadow: $size-xs 0 $size-sm $size-xs rgba($black, 0.2);
+
+  .arrow-button {
+    position: fixed;
+    margin-left: 90px;
+    margin-top: $size-md;
+    -webkit-box-shadow: $size-xs 0 $size-sm $size-xs rgba($black, 0.2);
+    -moz-box-shadow: $size-xs 0 $size-sm $size-xs rgba($black, 0.2);
+    box-shadow: $size-xs 0 $size-sm $size-xs rgba($black, 0.2);
+    transition: ease-in-out margin-left $transition-mid, background-color ease-in-out $transition-mid;
+    border: 0;
+
+    i {
+      transition: ease-in-out transform $transition-mid;
+    }
+  }
+
+  .expand-button {
+    display: none;
+  }
+
+  > div {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  span {
+    font-size: 0;
+    transition: ease-in-out all $transition-mid;
+  }
+
+  .tooltip span {
+    font-size: $font-sm;
+  }
+  .sidebar-header {
+    flex: inherit;
+
+    .home {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      color: $white;
+      margin: $size-lg auto;
+      height: 80px;
+      max-width: 80px;
+      overflow: hidden;
+      transition: ease-in-out all $transition-mid;
+
+      img {
+        max-width: 40px;
+      }
+      span {
+        text-transform: uppercase;
+        margin-top: $size-md;
+      }
+    }
+  }
+
+  .sidebar-content {
+    display: flex;
+    justify-content: space-between;
+
+    .btn {
+      border-radius: 0;
+    }
+
+    .tooltip-container,
+    .tooltip-trigger {
+      width: 100%;
+    }
+
+    .link {
+      margin-top: -1px;
+      border-top: 1px solid $white;
+      border-bottom: 1px solid $white;
+      color: $white;
+      transition: background-color ease-in-out $transition-mid;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      height: 40px;
+      font-family: Arial, Helvetica, sans-serif;
+
+      i {
+        margin-left: 10px;
+        font-size: $font-sm;
+      }
+    }
+    .link:hover {
+      background-color: $primary-light;
+    }
+  }
+}
+
+.main-sidebar.expanded {
+  width: 250px;
+
+  .arrow-button {
+    margin-left: 260px;
+
+    i {
+      transform: rotateZ(180deg);
+    }
+  }
+
+  .home {
+    max-width: 300px;
+    transition: ease-in-out all 0.3s;
+
+    span {
+      font-size: $font-lg;
+    }
+  }
+
+  .link {
+    span {
+      margin-left: $size-md;
+      font-size: $font-sm;
+    }
+  }
+}
+
+@media screen and (max-width: $screen-xl) {
+  .main-sidebar {
+    bottom: inherit;
+    position: fixed;
+    width: 100%;
+
+    .arrow-button {
+      display: none;
+    }
+
+    span {
+      font-size: inherit;
+    }
+
+    .sidebar-header {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 70px;
+
+      .home {
+        max-width: none;
+        margin: 0;
+        flex-direction: row;
+        align-items: center;
+
+        img {
+          max-height: 40px;
+          margin-right: $size-md;
+        }
+        span {
+          font-size: $font-xl;
+          margin: 0;
+        }
+      }
+      .expand-button {
+        display: block;
+        position: fixed;
+        top: $size-lg;
+        left: $size-md;
+        padding: 0;
+
+        i {
+          font-size: $font-subtitle;
+          margin: 0;
+        }
+      }
+    }
+
+    .sidebar-content,
+    .sidebar-content * {
+      max-height: 0;
+      opacity: 0;
+      font-size: 0;
+      transition: ease-in-out all $transition-mid;
+      pointer-events: none;
+    }
+  }
+
+  .main-sidebar.expanded {
+    width: 100%;
+    .sidebar-content,
+    .sidebar-content * {
+      max-height: 100vh;
+      opacity: 1;
+      font-size: $font-md;
+      pointer-events: all;
+    }
+  }
+}

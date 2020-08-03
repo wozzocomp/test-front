@@ -1,0 +1,23 @@
+@import 'styles/constants.scss';
+
+.backoffice-card {
+  min-height: 250px;
+  display: flex;
+
+  > .btn {
+    flex: 1;
+    flex-direction: column;
+    border-radius: $size-lg;
+    font-size: $font-subtitle;
+    background: radial-gradient(circle, $primary 0%, $primary 100%);
+    transition: ease-in-out all $transition-mid;
+    border: 0;
+
+    i.left.with-margin {
+      margin: 0;
+    }
+  }
+  > .btn:hover {
+    background: radial-gradient(circle, $primary 0%, $primary-light 100%);
+  }
+}

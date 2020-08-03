@@ -1,0 +1,71 @@
+@import '../../styles/constants.scss';
+
+#login-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  width: 100%;
+  padding: $size-lg;
+  background-color: $primary;
+  background: radial-gradient(circle, $primary 0%, $primary-light 100%);
+
+  img {
+    max-height: 30vh;
+    margin-bottom: $size-lg;
+  }
+
+  .login-form {
+    padding: $size-xl;
+    border-radius: $size-lg;
+    background-color: rgba($white, 0.5);
+    background: linear-gradient(180deg, $white 0%, $primary-lighter 100%);
+    max-width: 400px;
+
+    h2 {
+      margin: 0 0 $size-lg 0;
+      text-align: center;
+    }
+
+    .wozzo-input {
+      background-color: $white;
+      border-radius: $size-sm;
+      margin-bottom: $size-lg;
+
+      > div {
+        padding: $size-md;
+        border-radius: $size-sm;
+        border: 1px solid $gray-lighter;
+      }
+      .placeholder:not(.with-content) {
+        transform: translate($size-xl, -($size-sm));
+      }
+    }
+    .wozzo-input.error {
+      > div {
+        border-color: $color-error;
+      }
+    }
+
+    > .error-container {
+      margin-bottom: $size-lg;
+    }
+
+    > .btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: $font-lg;
+      border-radius: $size-xl;
+      padding: $size-lg $size-xxl;
+      height: $size-xxl;
+      margin: 0 auto;
+
+      .loading-container {
+        transform: scale(0.5);
+        margin-right: -($size-xxl);
+      }
+    }
+  }
+}

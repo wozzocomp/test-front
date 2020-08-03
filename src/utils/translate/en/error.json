@@ -1,0 +1,19 @@
+{
+  "createdAt": "Date",
+  "deleteKo": "An error occurred while deleting error",
+  "deleteOk": "Error deleted successfully",
+  "deleteMany": "Delete selected",
+  "deleteManyKo": "An error occurred while deleting the errors",
+  "deleteManyOk": "Errors deleted successfully",
+  "deleteManySure": "Are you sure you want to delete",
+  "error": "Error",
+  "errors": "Errors",
+  "login": {
+    "noToken": "Invalid link.",
+    "noUser": "User is deleted. Please register again.",
+    "unknown": "An error has occurred. Please verify that the link is correct. If the error continues, please request the password change again."
+  },
+  "info": "Info",
+  "maxLengthDate": "The maximum search period is two months.",
+  "noErrorsFound": "No errors found"
+}

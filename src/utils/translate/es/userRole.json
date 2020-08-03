@@ -1,0 +1,18 @@
+{
+  "active": "Activo",
+  "activate": "Activar rol",
+  "activateSure": "Va a activar el rol",
+  "disable": "Desactivar rol",
+  "disableSure": "Va a desactivar el rol",
+  "name": "Nombre",
+  "noRolesFound": "No se ha encontrado ningun rol",
+  "roles": {
+    "superadmin": "Superadministrador",
+    "admin": "Administrador"
+  },
+  "translation": "Traducción",
+  "updateKo": "Ha habido un error al actualizar el rol",
+  "updateOk": "El rol se ha actualizado correctamente",
+  "userRole": "Rol de usuario",
+  "userRoles": "Roles de usuario"
+}

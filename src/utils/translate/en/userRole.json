@@ -1,0 +1,18 @@
+{
+  "active": "Active",
+  "activate": "Activate role",
+  "activateSure": "You're going to activate role",
+  "disable": "Disable role",
+  "disableSure": "You're going to disable role",
+  "name": "Name",
+  "noErrorsFound": "No roles found",
+  "roles": {
+    "superadmin": "Superadmin",
+    "admin": "Admin"
+  },
+  "translation": "Translation",
+  "updateKo": "An error occurred while updating role",
+  "updateOk": "Role updated successfully",
+  "userRole": "User role",
+  "userRoles": "User roles"
+}

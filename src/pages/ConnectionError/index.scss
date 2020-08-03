@@ -1,0 +1,121 @@
+@import 'styles/constants.scss';
+
+#connection-error-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: $background-gray;
+
+  .connection-error {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: $white;
+    padding: $size-lg;
+    border-radius: $size-sm;
+    max-width: 1200px;
+
+    img {
+      max-width: 500px;
+      margin-right: $size-xl;
+    }
+
+    > div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      h1 {
+        margin: 0;
+        font-size: 50px;
+      }
+
+      > p {
+        font-size: $font-xl;
+        text-align: center;
+      }
+
+      > div {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $screen-xl) {
+  #connection-error-container {
+    .connection-error {
+      img {
+        max-width: 400px;
+      }
+
+      > div {
+        h1 {
+          font-size: $font-title;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $screen-lg) {
+  #connection-error-container {
+    .connection-error {
+      flex-direction: column;
+      img {
+        max-width: 350px;
+        margin-right: 0;
+      }
+
+      > div {
+        h1 {
+          margin-top: $size-lg;
+          font-size: $font-subtitle;
+        }
+
+        > p {
+          font-size: $font-lg;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $screen-lg) {
+  #connection-error-container {
+    .connection-error {
+      img {
+        max-width: 300px;
+      }
+
+      > div {
+        h1 {
+          font-size: $font-xl;
+        }
+
+        > p {
+          font-size: $font-md;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $screen-md) {
+  #connection-error-container {
+    .connection-error {
+      img {
+        max-width: 250px;
+      }
+      > div {
+        > p {
+          font-size: $font-md;
+        }
+      }
+    }
+  }
+}

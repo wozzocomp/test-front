@@ -1,0 +1,22 @@
+@import 'styles/constants.scss';
+
+#backoffice-errors-page {
+  .page-body {
+    max-width: $content-max-width;
+    display: flex;
+    flex-wrap: wrap;
+    .generic-backoffice-table {
+      .wozzo-table {
+        tr {
+          td {
+            overflow: hidden;
+          }
+          .error-text {
+            white-space: nowrap;
+            text-overflow: ellipsis;
+          }
+        }
+      }
+    }
+  }
+}

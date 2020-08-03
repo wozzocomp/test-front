@@ -1,0 +1,10 @@
+@import 'styles/constants.scss';
+
+.wozzo-modal-container .wozzo-modal.change-password {
+  max-width: 600px;
+
+  .wozzo-modal-body {
+    display: flex;
+    flex-direction: column;
+  }
+}
