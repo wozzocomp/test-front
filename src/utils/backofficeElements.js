@@ -21,7 +21,7 @@ export const SUPERADMIN_ELEMS = [
     url: BACKOFFICE_USER_ROLES_URL,
   },
   {
-    icon: 'fas fa-star',
+    icon: 'fas fa-user-music',
     text: translate('navbar.artist'),
     url: BACKOFFICE_ARTISTS_URL,
   },
