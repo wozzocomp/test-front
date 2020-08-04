@@ -1,0 +1,16 @@
+{
+  "active": "Active",
+  "activate": "Activate artist",
+  "activateSure": "You're going to activate artist",
+  "artist": "Artist",
+  "artists": "Artists",
+  "deleted": "Deleted",
+  "description": "Description",
+  "disable": "Disable artist",
+  "disableSure": "You're going to disable artist",
+  "name": "Name",
+  "noArtistsFound": "No artists found",
+  "translation": "Translation",
+  "updateKo": "An error occurred while updating artist",
+  "updateOk": "artist updated successfully"
+}

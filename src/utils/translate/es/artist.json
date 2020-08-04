@@ -1,0 +1,16 @@
+{
+  "active": "Activo",
+  "activate": "Activar artista",
+  "activateSure": "Va a activar el artista",
+  "artist": "Artista",
+  "artists": "Artistas",
+  "deleted": "Eliminado",
+  "description": "Description",
+  "disable": "Desactivar artista",
+  "disableSure": "Va a desactivar el artista",
+  "name": "Nombre",
+  "noArtistsFound": "No se ha encontrado ningun artista",
+  "translation": "Traducción",
+  "updateKo": "Ha habido un error al actualizar el artista",
+  "updateOk": "El artista se ha actualizado correctamente"
+}
