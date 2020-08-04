@@ -91,7 +91,6 @@ const BackofficeUsersPage = ({ user, userRole }) => {
     if (!email || !validateEmail(email)) {
       errs.hasErrors = true;
       errs.email = true;
-      console.warn('hello');
     }
 
     if (!role || !role._id) {
