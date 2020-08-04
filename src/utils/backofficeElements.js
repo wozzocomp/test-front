@@ -1,5 +1,5 @@
 import { translate } from './translate/translator';
-import { BACKOFFICE_USERS_URL, BACKOFFICE_ERRORS_URL, BACKOFFICE_USER_ROLES_URL } from './urls';
+import { BACKOFFICE_USERS_URL, BACKOFFICE_ERRORS_URL, BACKOFFICE_USER_ROLES_URL, BACKOFFICE_ARTISTS_URL } from './urls';
 
 export const ELEMENTS = [
   {
@@ -19,5 +19,10 @@ export const SUPERADMIN_ELEMS = [
     icon: 'fas fa-user-tag',
     text: translate('navbar.userRoles'),
     url: BACKOFFICE_USER_ROLES_URL,
+  },
+  {
+    icon: 'fas fa-star',
+    text: translate('navbar.artist'),
+    url: BACKOFFICE_ARTISTS_URL,
   },
 ];
