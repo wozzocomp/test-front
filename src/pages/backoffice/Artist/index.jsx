@@ -28,8 +28,6 @@ const BackofficeArtistsPage = () => {
   };
 
   const onSearch = (filter) => {
-    // eslint-disable-next-line no-console
-    console.log(filter);
     setLoading(true);
     getArtists(filter)
       .then((newArtists) => {
