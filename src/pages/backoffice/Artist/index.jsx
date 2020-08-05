@@ -162,7 +162,7 @@ const BackofficeArtistsPage = () => {
   };
 
   return (
-    <Page id="backoffice-artists-page" backoffice title={translate('navbar.artist')}>
+    <Page id="backoffice-artists-page" backoffice title={translate('navbar.artists')}>
       <GenericBackoffice
         {...forms.backoffice.table}
         tableProps={{

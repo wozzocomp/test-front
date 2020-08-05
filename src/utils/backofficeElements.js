@@ -22,7 +22,7 @@ export const SUPERADMIN_ELEMS = [
   },
   {
     icon: 'fas fa-user-music',
-    text: translate('navbar.artist'),
+    text: translate('navbar.artists'),
     url: BACKOFFICE_ARTISTS_URL,
   },
 ];

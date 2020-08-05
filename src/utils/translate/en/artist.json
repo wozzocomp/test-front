@@ -1,16 +1,23 @@
 {
   "active": "Active",
   "activate": "Activate artist",
-  "activateSure": "You're going to activate artist",
+  "activateSure": "You're going to activate the artist",
   "artist": "Artist",
   "artists": "Artists",
+  "createKo": "An error occurred while creating the artist",
+  "createOk": "Artist created successfully",
   "deleted": "Deleted",
+  "deleteSure": "You're going to delete the artist",
   "description": "Description",
   "disable": "Disable artist",
-  "disableSure": "You're going to disable artist",
+  "disableSure": "You're going to disable the artist",
+  "enable": "Enable artist",
+  "enableSure": "You're going to enable the artist",
   "name": "Name",
   "noArtistsFound": "No artists found",
+  "restore": "Restore artist",
+  "restoreSure": "You're going to restore the artist",
   "translation": "Translation",
-  "updateKo": "An error occurred while updating artist",
-  "updateOk": "artist updated successfully"
+  "updateKo": "An error occurred while updating the artist",
+  "updateOk": "Artist updated successfully"
 }
