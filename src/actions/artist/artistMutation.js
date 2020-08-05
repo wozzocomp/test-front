@@ -17,7 +17,16 @@ const updateArtist = gql`
   }
 `;
 
+const deleteArtist = gql`
+  mutation deleteArtist($artistId: ID!) {
+    deleteArtist(artistId: $artistId) {
+      ${artist}
+    }
+  }
+`;
+
 export default {
   createArtist,
+  deleteArtist,
   updateArtist,
 };

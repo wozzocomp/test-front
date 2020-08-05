@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { GenericBackoffice, GenericBackofficeElement, GENERIC_TYPES, SureModal } from '@wozzocomp/base-comps';
-import { getArtists, saveArtist, updateArtist } from '../../../actions/artist';
+import { getArtists, saveArtist, updateArtist, deleteArtist } from '../../../actions/artist';
 import { showSuccessToast, showErrorToast } from '../../../utils/toasts';
 import { translate } from '../../../utils/translate/translator';
 import ActiveInactiveIcon from '../../../components/base/ActiveInactiveIcon';
@@ -123,7 +123,7 @@ const BackofficeArtistsPage = () => {
   };
 
   const onDelete = (item, cb) => {
-    updateArtist(item._id, { name: 'undefined', deleted: true })
+    deleteArtist(item._id)
       .then(() => {
         cb();
         onSearch();
