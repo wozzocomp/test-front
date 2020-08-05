@@ -86,3 +86,18 @@ export const restoreArtist = (artistId) =>
         });
     }
   });
+
+export const enableArtist = (artistId) =>
+  new Promise((resolve, reject) => {
+    if (!artistId) {
+      reject();
+    } else {
+      apolloQuery(artistMutation.enableArtist, { artistId })
+        .then((response) => {
+          resolve(response.data.artist);
+        })
+        .catch((error) => {
+          reject(error);
+        });
+    }
+  });

@@ -1,6 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { GenericBackoffice, GenericBackofficeElement, GENERIC_TYPES, SureModal } from '@wozzocomp/base-comps';
-import { getArtists, saveArtist, updateArtist, deleteArtist, restoreArtist } from '../../../actions/artist';
+import {
+  getArtists,
+  saveArtist,
+  updateArtist,
+  deleteArtist,
+  restoreArtist,
+  enableArtist,
+} from '../../../actions/artist';
 import { showSuccessToast, showErrorToast } from '../../../utils/toasts';
 import { translate } from '../../../utils/translate/translator';
 import ActiveInactiveIcon from '../../../components/base/ActiveInactiveIcon';
@@ -87,6 +94,9 @@ const BackofficeArtistsPage = () => {
 
     if (SURE_MODES.RESTORE === sureMode) {
       call = restoreArtist;
+    }
+    if (SURE_MODES.ENABLE === sureMode) {
+      call = enableArtist;
     }
 
     call(selectedArtist._id)
