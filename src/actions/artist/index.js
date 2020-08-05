@@ -4,11 +4,11 @@ import artistQueries from './artistQueries';
 import { WRONG_PARAMS } from '../../utils/constants';
 
 const formatForSave = (artist) => ({
-  _id: artist._id,
-  name: artist.name,
-  description: artist.description,
-  active: artist.active,
-  deleted: artist.deleted,
+  _id: artist?._id ? artist._id : null,
+  name: artist?.name ? artist.name : null,
+  description: artist?.description ? artist.description : null,
+  active: artist?.active ? artist.active : null,
+  deleted: artist?.deleted ? artist.deleted : null,
 });
 
 export const getArtists = ({ _id, name, active, deleted }) =>
