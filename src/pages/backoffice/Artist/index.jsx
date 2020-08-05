@@ -98,9 +98,9 @@ const BackofficeArtistsPage = () => {
       upsertArtist.active = true;
     }
 
-    updateArtist(selectedArtist._id, upsertArtist)
+    updateArtist(upsertArtist)
       .then(() => {
-        onSearch({ active: true });
+        onSearch();
         setShowSure(false);
         showSuccessToast(translate('user.updateOk'));
         setLoadingUpdate(false);
@@ -126,7 +126,7 @@ const BackofficeArtistsPage = () => {
     updateArtist(item._id, { name: 'undefined', deleted: true })
       .then(() => {
         cb();
-        onSearch({ active: true });
+        onSearch();
         showSuccessToast(translate('user.updateOk'));
       })
       .catch(() => {
@@ -137,21 +137,19 @@ const BackofficeArtistsPage = () => {
   const onSave = (artist, cb) => {
     setLoadingUpdate(true);
     let saveFunction = saveArtist;
-    let args = [ artist ];
     let koMessage = 'artist.createKo';
     let okMessage = 'artist.createOk';
 
     if (artist?._id) {
       saveFunction = updateArtist;
-      args = [ artist._id, ...args ];
       koMessage = 'artist.updateKo';
       okMessage = 'artist.updateOk';
     }
 
-    saveFunction(...args)
+    saveFunction(artist)
       .then(() => {
         cb();
-        onSearch({});
+        onSearch();
         showSuccessToast(translate(okMessage));
         setLoadingUpdate(false);
       })

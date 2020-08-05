@@ -10,8 +10,8 @@ const createArtist = gql`
 `;
 
 const updateArtist = gql`
-  mutation updateArtist($artistId: ID! ,$artist: ArtistInput!) {
-    updateArtist(artistId: $artistId, artist: $artist) {
+  mutation updateArtist($artist: ArtistInput!) {
+    updateArtist(artist: $artist) {
       ${artist}
     }
   }

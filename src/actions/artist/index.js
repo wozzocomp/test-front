@@ -5,15 +5,20 @@ import { WRONG_PARAMS } from '../../utils/constants';
 
 const formatForSave = (artist) => ({
   _id: artist?._id ? artist._id : null,
-  name: artist?.name ? artist.name : null,
-  description: artist?.description ? artist.description : null,
-  active: artist?.active ? artist.active : null,
-  deleted: artist?.deleted ? artist.deleted : null,
+  name: artist.name,
+  description: artist.description,
+  active: artist.active,
+  deleted: artist.deleted,
 });
 
-export const getArtists = ({ _id, name, active, deleted }) =>
+export const getArtists = (filter = {}) =>
   new Promise((resolve, reject) => {
-    apolloQuery(artistQueries.artists, { _id, name, active, deleted })
+    apolloQuery(artistQueries.artists, {
+      _id: filter._id,
+      name: filter.name,
+      active: filter.active,
+      deleted: filter.deleted,
+    })
       .then((response) => {
         resolve(response.data.artists);
       })
@@ -37,12 +42,12 @@ export const saveArtist = (artist) =>
     }
   });
 
-export const updateArtist = (id, artist) =>
+export const updateArtist = (artist) =>
   new Promise((resolve, reject) => {
-    if (!artist || !id) {
+    if (!artist || !artist?._id || !artist?.name) {
       reject(WRONG_PARAMS);
     } else {
-      apolloQuery(artistMutation.updateArtist, { artistId: id, artist: formatForSave(artist) })
+      apolloQuery(artistMutation.updateArtist, { artist: formatForSave(artist) })
         .then((response) => {
           resolve(response.data.artists);
         })
