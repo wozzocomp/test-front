@@ -3,12 +3,12 @@ import artistMutation from './artistMutation';
 import artistQueries from './artistQueries';
 import { WRONG_PARAMS } from '../../utils/constants';
 
-const formatForSave = (artist) => ({
-  _id: artist?._id ? artist._id : null,
-  name: artist.name,
-  description: artist.description,
-  active: artist.active,
-  deleted: artist.deleted,
+const formatForSave = ({ _id, name, description, active, deleted }) => ({
+  _id,
+  name,
+  description,
+  active,
+  deleted,
 });
 
 export const createArtist = (artist) =>
