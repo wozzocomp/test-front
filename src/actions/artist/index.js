@@ -18,7 +18,7 @@ export const createArtist = (artist) =>
     } else {
       apolloQuery(artistMutation.createArtist, { artist: formatForSave(artist) })
         .then((response) => {
-          resolve(response.data.artists);
+          resolve(response.data.createArtist);
         })
         .catch((error) => {
           reject(error);
@@ -33,7 +33,7 @@ export const disableArtist = (artistId) =>
     } else {
       apolloQuery(artistMutation.disableArtist, { artistId })
         .then((response) => {
-          resolve(response.data.artist);
+          resolve(response.data.disableArtist);
         })
         .catch((error) => {
           reject(error);
@@ -48,7 +48,7 @@ export const deleteArtist = (artistId) =>
     } else {
       apolloQuery(artistMutation.deleteArtist, { artistId })
         .then((response) => {
-          resolve(response.data.artist);
+          resolve(response.data.deleteArtist);
         })
         .catch((error) => {
           reject(error);
@@ -63,7 +63,7 @@ export const enableArtist = (artistId) =>
     } else {
       apolloQuery(artistMutation.enableArtist, { artistId })
         .then((response) => {
-          resolve(response.data.artist);
+          resolve(response.data.enableArtist);
         })
         .catch((error) => {
           reject(error);
@@ -78,7 +78,7 @@ export const restoreArtist = (artistId) =>
     } else {
       apolloQuery(artistMutation.restoreArtist, { artistId })
         .then((response) => {
-          resolve(response.data.artist);
+          resolve(response.data.restoreArtist);
         })
         .catch((error) => {
           reject(error);
@@ -109,7 +109,7 @@ export const updateArtist = (artist) =>
     } else {
       apolloQuery(artistMutation.updateArtist, { artist: formatForSave(artist) })
         .then((response) => {
-          resolve(response.data.artists);
+          resolve(response.data.updateArtist);
         })
         .catch((error) => {
           reject(error);
