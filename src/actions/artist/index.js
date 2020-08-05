@@ -21,4 +21,33 @@ export const getArtists = ({ _id, name, active, deleted }) =>
         reject(error);
       });
   });
-export default getArtists;
+
+export const saveArtist = (artist) =>
+  new Promise((resolve, reject) => {
+    if (!artist || !artist.name) {
+      reject(WRONG_PARAMS);
+    } else {
+      apolloQuery(artistMutation.createArtist, { artist: formatForSave(artist) })
+        .then((response) => {
+          resolve(response.data.artists);
+        })
+        .catch((error) => {
+          reject(error);
+        });
+    }
+  });
+
+export const updateArtist = (id, artist) =>
+  new Promise((resolve, reject) => {
+    if (!artist || !id) {
+      reject(WRONG_PARAMS);
+    } else {
+      apolloQuery(artistMutation.updateArtist, { artistId: id, artist: formatForSave(artist) })
+        .then((response) => {
+          resolve(response.data.artists);
+        })
+        .catch((error) => {
+          reject(error);
+        });
+    }
+  });

@@ -4,6 +4,8 @@
   "activateSure": "Va a activar el artista",
   "artist": "Artista",
   "artists": "Artistas",
+  "cerateKo": "Ha habido un error al crear el artista",
+  "createOk": "El artista se ha creado correctamente",
   "deleted": "Eliminado",
   "description": "Description",
   "disable": "Desactivar artista",
