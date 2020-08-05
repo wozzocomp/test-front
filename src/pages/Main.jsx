@@ -10,6 +10,7 @@ import {
   INDEX_URL,
   LOGIN_URL,
   BACKOFFICE_URL,
+  BACKOFFICE_ARTISTS_URL,
   BACKOFFICE_USER_ROLES_URL,
   BACKOFFICE_USERS_URL,
   BACKOFFICE_ERRORS_URL,
@@ -19,6 +20,7 @@ import { userIsAdminOrMore, userIsSuperadmin } from '../utils/functions';
 import MainBackofficePage from '../containers/backoffice';
 import Sidebar from '../components/backoffice/Sidebar';
 import UserPage from '../containers/user';
+import BackofficeArtistsPage from './backoffice/Artist';
 import BackofficeUsersPage from '../containers/backoffice/users';
 import BackofficeUserRolesPage from './backoffice/UserRoles';
 import BackofficeErrorsPage from './backoffice/Errors';
@@ -70,6 +72,11 @@ const Main = ({ initialize, loading, noConnection, userRole, user }) => {
                 <Switch>
                   <Route exact path={INDEX_URL} render={() => redirectPublic(userRole, LoginPage)} />
                   <Route exact path={BACKOFFICE_URL} render={() => redirectBackoffice(userRole, MainBackofficePage)} />
+                  <Route
+                    exact
+                    path={BACKOFFICE_ARTISTS_URL}
+                    render={() => redirectBackoffice(userRole, BackofficeArtistsPage)}
+                  />
                   <Route exact path={BACKOFFICE_USER_URL} render={() => redirectBackoffice(userRole, UserPage)} />
                   <Route
                     exact
