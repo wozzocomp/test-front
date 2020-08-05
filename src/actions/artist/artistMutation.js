@@ -9,14 +9,6 @@ const createArtist = gql`
   }
 `;
 
-const updateArtist = gql`
-  mutation updateArtist($artist: ArtistInput!) {
-    updateArtist(artist: $artist) {
-      ${artist}
-    }
-  }
-`;
-
 const deleteArtist = gql`
   mutation deleteArtist($artistId: ID!) {
     deleteArtist(artistId: $artistId) {
@@ -25,9 +17,9 @@ const deleteArtist = gql`
   }
 `;
 
-const restoreArtist = gql`
-  mutation restoreArtist($artistId: ID!) {
-    restoreArtist(artistId: $artistId) {
+const disableArtist = gql`
+  mutation disableArtist($artistId: ID!) {
+    disableArtist(artistId: $artistId) {
       ${artist}
     }
   }
@@ -41,8 +33,25 @@ const enableArtist = gql`
   }
 `;
 
+const restoreArtist = gql`
+  mutation restoreArtist($artistId: ID!) {
+    restoreArtist(artistId: $artistId) {
+      ${artist}
+    }
+  }
+`;
+
+const updateArtist = gql`
+  mutation updateArtist($artist: ArtistInput!) {
+    updateArtist(artist: $artist) {
+      ${artist}
+    }
+  }
+`;
+
 export default {
   createArtist,
+  disableArtist,
   deleteArtist,
   enableArtist,
   restoreArtist,

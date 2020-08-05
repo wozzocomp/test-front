@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { GenericBackoffice, GenericBackofficeElement, GENERIC_TYPES, SureModal } from '@wozzocomp/base-comps';
 import {
-  getArtists,
-  saveArtist,
-  updateArtist,
+  createArtist,
   deleteArtist,
-  restoreArtist,
+  disableArtist,
   enableArtist,
+  restoreArtist,
+  searchArtistsByFilter,
+  updateArtist,
 } from '../../../actions/artist';
 import { showSuccessToast, showErrorToast } from '../../../utils/toasts';
 import { translate } from '../../../utils/translate/translator';
@@ -72,7 +73,7 @@ const BackofficeArtistsPage = () => {
 
   const onSearch = (filter) => {
     setLoading(true);
-    getArtists(filter)
+    searchArtistsByFilter(filter)
       .then((newArtists) => {
         setArtists(newArtists);
         setLoading(false);
@@ -92,11 +93,17 @@ const BackofficeArtistsPage = () => {
     setLoadingUpdate(true);
     let call = null;
 
-    if (SURE_MODES.RESTORE === sureMode) {
-      call = restoreArtist;
-    }
     if (SURE_MODES.ENABLE === sureMode) {
       call = enableArtist;
+    }
+    if (SURE_MODES.DELETE === sureMode) {
+      call = deleteArtist;
+    }
+    if (SURE_MODES.DISABLE === sureMode) {
+      call = disableArtist;
+    }
+    if (SURE_MODES.RESTORE === sureMode) {
+      call = restoreArtist;
     }
 
     call(selectedArtist._id)
@@ -123,21 +130,9 @@ const BackofficeArtistsPage = () => {
     return errs;
   };
 
-  const onDelete = (item, cb) => {
-    deleteArtist(item._id)
-      .then(() => {
-        cb();
-        onSearch();
-        showSuccessToast(translate('user.updateOk'));
-      })
-      .catch(() => {
-        showErrorToast(translate('user.updateKo'));
-      });
-  };
-
   const onSave = (artist, cb) => {
     setLoadingUpdate(true);
-    let saveFunction = saveArtist;
+    let saveFunction = createArtist;
     let koMessage = 'artist.createKo';
     let okMessage = 'artist.createOk';
 
@@ -176,7 +171,6 @@ const BackofficeArtistsPage = () => {
         objects={artists}
         showDelete={false}
         title={translate('artist.artists')}
-        onDelete={onDelete}
         onSave={onSave}
         onSearch={onSearch}>
         <GenericBackofficeElement
