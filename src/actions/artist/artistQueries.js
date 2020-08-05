@@ -1,13 +1,10 @@
 import gql from 'graphql-tag';
+import artist from '../../utils/types/artist';
 
 const artists = gql`
-  query artists($name: String, $active: Boolean, $deleted: Boolean) {
-    artists(name: $name, active: $active, deleted: $deleted) {
-      _id
-      name
-      description
-      active
-      deleted
+  query artists($_id: ID, $name: String, $active: Boolean, $deleted: Boolean) {
+    artists(_id: $_id, name: $name, active: $active, deleted: $deleted) {
+      ${artist}
     }
   }
 `;
