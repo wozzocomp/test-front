@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { GenericBackoffice, GenericBackofficeElement, GENERIC_TYPES, SureModal } from '@wozzocomp/base-comps';
-import { getArtists, saveArtist, updateArtist, deleteArtist } from '../../../actions/artist';
+import { getArtists, saveArtist, updateArtist, deleteArtist, restoreArtist } from '../../../actions/artist';
 import { showSuccessToast, showErrorToast } from '../../../utils/toasts';
 import { translate } from '../../../utils/translate/translator';
 import ActiveInactiveIcon from '../../../components/base/ActiveInactiveIcon';
@@ -83,22 +83,13 @@ const BackofficeArtistsPage = () => {
 
   const onAcceptSure = () => {
     setLoadingUpdate(true);
-    const upsertArtist = { ...selectedArtist };
+    let call = null;
 
-    if (SURE_MODES.DISABLE === sureMode) {
-      upsertArtist.active = false;
-    }
-    if (SURE_MODES.DELETE === sureMode) {
-      upsertArtist.deleted = true;
-    }
     if (SURE_MODES.RESTORE === sureMode) {
-      upsertArtist.deleted = false;
-    }
-    if (SURE_MODES.ENABLE === sureMode) {
-      upsertArtist.active = true;
+      call = restoreArtist;
     }
 
-    updateArtist(upsertArtist)
+    call(selectedArtist._id)
       .then(() => {
         onSearch();
         setShowSure(false);
