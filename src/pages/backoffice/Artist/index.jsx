@@ -106,17 +106,19 @@ const BackofficeArtistsPage = () => {
       call = restoreArtist;
     }
 
-    call(selectedArtist._id)
-      .then(() => {
-        onSearch();
-        setShowSure(false);
-        showSuccessToast(translate('user.updateOk'));
-        setLoadingUpdate(false);
-      })
-      .catch(() => {
-        showErrorToast(translate('user.updateKo'));
-        setLoadingUpdate(false);
-      });
+    if (call) {
+      call(selectedArtist._id)
+        .then(() => {
+          onSearch();
+          setShowSure(false);
+          showSuccessToast(translate('user.updateOk'));
+          setLoadingUpdate(false);
+        })
+        .catch(() => {
+          showErrorToast(translate('user.updateKo'));
+          setLoadingUpdate(false);
+        });
+    }
   };
 
   const validateArtist = ({ name }) => {
