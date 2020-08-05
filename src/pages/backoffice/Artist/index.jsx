@@ -111,6 +111,17 @@ const BackofficeArtistsPage = () => {
       });
   };
 
+  const validateArtist = ({ name }) => {
+    const errs = { hasErrors: false };
+
+    if (!name || 1 > name?.trim().length) {
+      errs.hasErrors = true;
+      errs.name = true;
+    }
+
+    return errs;
+  };
+
   const onDelete = (item, cb) => {
     updateArtist(item._id, { name: 'undefined', deleted: true })
       .then(() => {
@@ -159,6 +170,7 @@ const BackofficeArtistsPage = () => {
           csvFileName: translate('artist.artists'),
         }}
         translations={{ ...forms.backoffice.table.translations, noItems: translate('artist.noArtistsFound') }}
+        customValidator={validateArtist}
         entity={translate('artist.artist')}
         extraActions={getExtraActions}
         loading={loading}
