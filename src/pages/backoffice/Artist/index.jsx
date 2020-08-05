@@ -14,6 +14,7 @@ import { translate } from '../../../utils/translate/translator';
 import ActiveInactiveIcon from '../../../components/base/ActiveInactiveIcon';
 import forms from '../../../utils/forms';
 import Page from '../../../components/base/Page';
+import { isFunction } from '../../../utils/functions';
 
 const BackofficeArtistsPage = () => {
   const [ artists, setArtists ] = useState([]);
@@ -106,7 +107,7 @@ const BackofficeArtistsPage = () => {
       call = restoreArtist;
     }
 
-    if (call) {
+    if (isFunction(call)) {
       call(selectedArtist._id)
         .then(() => {
           onSearch();
