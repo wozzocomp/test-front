@@ -1,6 +1,6 @@
 import { apolloQuery } from '../../utils/ApiWrapper';
-import artistQueries from './artistQueries';
 import artistMutation from './artistMutation';
+import artistQueries from './artistQueries';
 import { WRONG_PARAMS } from '../../utils/constants';
 
 const formatForSave = (artist) => ({
