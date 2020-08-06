@@ -4,7 +4,7 @@ import {
   BACKOFFICE_ERRORS_URL,
   BACKOFFICE_USER_ROLES_URL,
   BACKOFFICE_ARTISTS_URL,
-  BACKOFFICE_MUSICAL_GENRES_URL,
+  BACKOFFICE_GENRES_URL,
 } from './urls';
 
 export const ELEMENTS = [
@@ -33,7 +33,7 @@ export const SUPERADMIN_ELEMS = [
   },
   {
     icon: 'fas fa-list-music',
-    text: translate('navbar.musicalGenres'),
-    url: BACKOFFICE_MUSICAL_GENRES_URL,
+    text: translate('navbar.genres'),
+    url: BACKOFFICE_GENRES_URL,
   },
 ];
