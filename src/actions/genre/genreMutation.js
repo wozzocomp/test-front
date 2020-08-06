@@ -25,6 +25,14 @@ const disableGenre = gql`
   }
 `;
 
+const enableGenre = gql`
+  mutation enableGenre($genreId: ID!) {
+    enableGenre(genreId: $genreId) {
+      ${genre}
+    }
+  }
+`;
+
 const restoreGenre = gql`
   mutation restoreGenre($genreId: ID!) {
     restoreGenre(genreId: $genreId) {
@@ -45,6 +53,7 @@ export default {
   createGenre,
   deleteGenre,
   disableGenre,
+  enableGenre,
   restoreGenre,
   updateGenre,
 };

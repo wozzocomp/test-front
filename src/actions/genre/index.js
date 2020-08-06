@@ -55,6 +55,21 @@ export const disableGenre = (genreId) =>
     }
   });
 
+export const enableGenre = (genreId) =>
+  new Promise((resolve, reject) => {
+    if (!genreId) {
+      reject();
+    } else {
+      apolloQuery(genreMutation.enableGenre, { genreId })
+        .then((response) => {
+          resolve(response.data.enableGenre);
+        })
+        .catch((error) => {
+          reject(error);
+        });
+    }
+  });
+
 export const restoreGenre = (genreId) =>
   new Promise((resolve, reject) => {
     if (!genreId) {

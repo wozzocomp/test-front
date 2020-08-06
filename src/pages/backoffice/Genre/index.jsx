@@ -9,6 +9,7 @@ import {
   deleteGenre,
   restoreGenre,
   disableGenre,
+  enableGenre,
 } from '../../../actions/genre';
 import ActiveInactiveIcon from '../../../components/base/ActiveInactiveIcon';
 import forms from '../../../utils/forms';
@@ -132,11 +133,14 @@ const BackofficeGenrePage = () => {
     if (SURE_MODES.DELETE === sureMode) {
       call = deleteGenre;
     }
-    if (SURE_MODES.RESTORE === sureMode) {
-      call = restoreGenre;
-    }
     if (SURE_MODES.DISABLE === sureMode) {
       call = disableGenre;
+    }
+    if (SURE_MODES.ENABLE === sureMode) {
+      call = enableGenre;
+    }
+    if (SURE_MODES.RESTORE === sureMode) {
+      call = restoreGenre;
     }
 
     if (isFunction(call)) {
