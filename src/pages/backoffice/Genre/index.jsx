@@ -2,7 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { GenericBackoffice, GenericBackofficeElement, GENERIC_TYPES, SureModal } from '@wozzocomp/base-comps';
 import { showSuccessToast, showErrorToast } from '../../../utils/toasts';
 import { translate } from '../../../utils/translate/translator';
-import { createGenre, searchGenreByFilter, updateGenre, deleteGenre, restoreGenre } from '../../../actions/genre';
+import {
+  createGenre,
+  searchGenreByFilter,
+  updateGenre,
+  deleteGenre,
+  restoreGenre,
+  disableGenre,
+} from '../../../actions/genre';
 import ActiveInactiveIcon from '../../../components/base/ActiveInactiveIcon';
 import forms from '../../../utils/forms';
 import Page from '../../../components/base/Page';
@@ -127,6 +134,9 @@ const BackofficeGenrePage = () => {
     }
     if (SURE_MODES.RESTORE === sureMode) {
       call = restoreGenre;
+    }
+    if (SURE_MODES.DISABLE === sureMode) {
+      call = disableGenre;
     }
 
     if (isFunction(call)) {

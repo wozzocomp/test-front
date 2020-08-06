@@ -40,6 +40,21 @@ export const deleteGenre = (genreId) =>
     }
   });
 
+export const disableGenre = (genreId) =>
+  new Promise((resolve, reject) => {
+    if (!genreId) {
+      reject();
+    } else {
+      apolloQuery(genreMutation.disableGenre, { genreId })
+        .then((response) => {
+          resolve(response.data.disableGenre);
+        })
+        .catch((error) => {
+          reject(error);
+        });
+    }
+  });
+
 export const restoreGenre = (genreId) =>
   new Promise((resolve, reject) => {
     if (!genreId) {
