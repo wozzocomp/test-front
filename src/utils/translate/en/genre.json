@@ -1,0 +1,22 @@
+{
+  "activate": "Activate genre",
+  "activateSure": "You're going to activate the genre",
+  "active": "Active",
+  "createKo": "An error occurred while creating the genre",
+  "createOk": "Music genre created successfully",
+  "deleted": "Deleted",
+  "deleteSure": "You're going to delete the genre",
+  "disable": "Disable genre",
+  "disableSure": "You're going to disable the genre",
+  "enable": "Enable genre",
+  "enableSure": "You're going to enable the genre",
+  "Gender": "Genre",
+  "Genders": "Genres",
+  "name": "Name",
+  "noGendersFound": "No genres found",
+  "restore": "Restore genre",
+  "restoreSure": "You're going to restore the genre",
+  "translation": "Translation",
+  "updateKo": "An error occurred while updating the genre",
+  "updateOk": "Music genre updated successfully"
+}
