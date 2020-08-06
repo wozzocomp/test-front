@@ -63,6 +63,17 @@ const BackofficeGenrePage = () => {
     return res;
   };
 
+  const validateGenre = ({ name }) => {
+    const errs = { hasErrors: false };
+
+    if (!name || 1 > name?.trim().length) {
+      errs.hasErrors = true;
+      errs.name = true;
+    }
+
+    return errs;
+  };
+
   const onSearch = (filter) => {
     setLoading(true);
     searchGenreByFilter(filter)
@@ -115,7 +126,7 @@ const BackofficeGenrePage = () => {
           csvFileName: translate('genre.genres'),
         }}
         translations={{ ...forms.backoffice.table.translations, noItems: translate('genre.noGenresFound') }}
-        //  customValidator={validateGenre}
+        customValidator={validateGenre}
         entity={translate('genre.genre')}
         extraActions={getExtraActions}
         loading={loading}
