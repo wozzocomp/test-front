@@ -112,11 +112,11 @@ const BackofficeArtistsPage = () => {
         .then(() => {
           onSearch();
           setShowSure(false);
-          showSuccessToast(translate('user.updateOk'));
+          showSuccessToast(translate('artist.updateOk'));
           setLoadingUpdate(false);
         })
         .catch(() => {
-          showErrorToast(translate('user.updateKo'));
+          showErrorToast(translate('artist.updateKo'));
           setLoadingUpdate(false);
         });
     }

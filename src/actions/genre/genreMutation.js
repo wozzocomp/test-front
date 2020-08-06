@@ -9,6 +9,14 @@ const createGenre = gql`
   }
 `;
 
+const deleteGenre = gql`
+  mutation deleteGenre($genreId: ID!) {
+    deleteGenre(genreId: $genreId) {
+      ${genre}
+    }
+  }
+`;
+
 const updateGenre = gql`
   mutation updateGenre($genre: GenreInput!){
     updateGenre(genre: $genre) {
@@ -19,5 +27,6 @@ const updateGenre = gql`
 
 export default {
   createGenre,
+  deleteGenre,
   updateGenre,
 };

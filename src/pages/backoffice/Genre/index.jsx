@@ -2,10 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { GenericBackoffice, GenericBackofficeElement, GENERIC_TYPES, SureModal } from '@wozzocomp/base-comps';
 import { showSuccessToast, showErrorToast } from '../../../utils/toasts';
 import { translate } from '../../../utils/translate/translator';
-import { createGenre, searchGenreByFilter, updateGenre } from '../../../actions/genre';
+import { createGenre, searchGenreByFilter, updateGenre, deleteGenre } from '../../../actions/genre';
 import ActiveInactiveIcon from '../../../components/base/ActiveInactiveIcon';
 import forms from '../../../utils/forms';
 import Page from '../../../components/base/Page';
+import { isFunction } from '../../../utils/functions';
 
 const BackofficeGenrePage = () => {
   const [ genres, setGenres ] = useState([]);
@@ -117,6 +118,29 @@ const BackofficeGenrePage = () => {
       });
   };
 
+  const onAcceptSure = () => {
+    setLoadingUpdate(true);
+    let call = null;
+
+    if (SURE_MODES.DELETE === sureMode) {
+      call = deleteGenre;
+    }
+
+    if (isFunction(call)) {
+      call(selectedGenre._id)
+        .then(() => {
+          onSearch();
+          setShowSure(false);
+          showSuccessToast(translate('genre.updateOk'));
+          setLoadingUpdate(false);
+        })
+        .catch(() => {
+          showErrorToast(translate('genre.updateKo'));
+          setLoadingUpdate(false);
+        });
+    }
+  };
+
   return (
     <Page id="backoffice-genres-page" backoffice title={translate('navbar.genres')}>
       <GenericBackoffice
@@ -179,7 +203,7 @@ const BackofficeGenrePage = () => {
           {...forms.modals.sure}
           header={translate(`genre.${sureMode}`)}
           loading={loadingUpdate}
-          //  onAccept={onAcceptSure}
+          onAccept={onAcceptSure}
           onHide={() => setShowSure(false)}
           show={showSure}>
           <p>
