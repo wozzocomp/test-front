@@ -1,7 +1,7 @@
 import { apolloQuery } from '../../utils/ApiWrapper';
-import genreQueries from './genreQueries';
-import genreMutation from './genreMutation';
 import { WRONG_PARAMS } from '../../utils/constants';
+import genreMutation from './genreMutation';
+import genreQueries from './genreQueries';
 
 const formatForSave = ({ _id, name, active, deleted }) => ({
   _id,
