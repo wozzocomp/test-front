@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { GenericBackoffice, GenericBackofficeElement, GENERIC_TYPES, SureModal } from '@wozzocomp/base-comps';
+import { showSuccessToast, showErrorToast } from '../../../utils/toasts';
 import { translate } from '../../../utils/translate/translator';
+import { createGenre, searchGenreByFilter } from '../../../actions/genre';
 import ActiveInactiveIcon from '../../../components/base/ActiveInactiveIcon';
 import forms from '../../../utils/forms';
 import Page from '../../../components/base/Page';
-import genresFilter from '../../../actions/genre';
 
 const BackofficeGenrePage = () => {
   const [ genres, setGenres ] = useState([]);
@@ -64,7 +65,7 @@ const BackofficeGenrePage = () => {
 
   const onSearch = (filter) => {
     setLoading(true);
-    genresFilter(filter)
+    searchGenreByFilter(filter)
       .then((newGenres) => {
         setGenres(newGenres);
         setLoading(false);
@@ -79,6 +80,22 @@ const BackofficeGenrePage = () => {
       setSelectedGenre(null);
     }
   }, [ showSure ]);
+
+  const onSave = (genre, cb) => {
+    setLoadingUpdate(true);
+
+    createGenre(genre)
+      .then(() => {
+        cb();
+        onSearch();
+        showSuccessToast(translate('genre.createOk'));
+        setLoadingUpdate(false);
+      })
+      .catch(() => {
+        showErrorToast(translate('genre.createKo'));
+        setLoadingUpdate(false);
+      });
+  };
 
   return (
     <Page id="backoffice-genres-page" backoffice title={translate('navbar.genres')}>
@@ -96,7 +113,7 @@ const BackofficeGenrePage = () => {
         objects={genres}
         showDelete={false}
         title={translate('genre.genres')}
-        //  onSave={onSave}
+        onSave={onSave}
         onSearch={onSearch}>
         <GenericBackofficeElement
           field="_id"
