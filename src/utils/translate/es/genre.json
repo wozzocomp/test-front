@@ -1,0 +1,21 @@
+{
+  "activate": "Activar género",
+  "activateSure": "Va a activar el género",
+  "active": "Activo",
+  "createKo": "Ha habido un error al crear el género",
+  "createOk": "El género se ha creado correctamente",
+  "deleted": "Eliminado",
+  "deleteSure": "Va a eliminar el género",
+  "disable": "Desactivar género",
+  "disableSure": "Va a desactivar el género",
+  "enable": "Activar género",
+  "enableSure": "Va a activar el género",
+  "genre": "Género",
+  "genres": "Géneros",
+  "name": "Nombre",
+  "noGendersFound": "No se ha encontrado ningún género",
+  "restore": "Restaurar género",
+  "restoreSure": "Va a restaurar al género",
+  "updateKo": "Ha habido un error al actualizar el género",
+  "updateOk": "El género se ha actualizado correctamente"
+}

@@ -1,5 +1,11 @@
 import { translate } from './translate/translator';
-import { BACKOFFICE_USERS_URL, BACKOFFICE_ERRORS_URL, BACKOFFICE_USER_ROLES_URL, BACKOFFICE_ARTISTS_URL } from './urls';
+import {
+  BACKOFFICE_USERS_URL,
+  BACKOFFICE_ERRORS_URL,
+  BACKOFFICE_USER_ROLES_URL,
+  BACKOFFICE_ARTISTS_URL,
+  BACKOFFICE_GENRES_URL,
+} from './urls';
 
 export const ELEMENTS = [
   {
@@ -24,5 +30,10 @@ export const SUPERADMIN_ELEMS = [
     icon: 'fas fa-user-music',
     text: translate('navbar.artists'),
     url: BACKOFFICE_ARTISTS_URL,
+  },
+  {
+    icon: 'fas fa-list-music',
+    text: translate('navbar.genres'),
+    url: BACKOFFICE_GENRES_URL,
   },
 ];

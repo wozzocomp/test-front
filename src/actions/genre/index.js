@@ -1,24 +1,23 @@
 import { apolloQuery } from '../../utils/ApiWrapper';
-import artistMutation from './artistMutation';
-import artistQueries from './artistQueries';
 import { WRONG_PARAMS } from '../../utils/constants';
+import genreMutation from './genreMutation';
+import genreQueries from './genreQueries';
 
-const formatForSave = ({ _id, name, description, active, deleted }) => ({
+const formatForSave = ({ _id, name, active, deleted }) => ({
   _id,
   name,
-  description,
   active,
   deleted,
 });
 
-export const createArtist = (artist) =>
+export const createGenre = (genre) =>
   new Promise((resolve, reject) => {
-    if (!artist || !artist.name) {
+    if (!genre || !genre.name) {
       reject(WRONG_PARAMS);
     } else {
-      apolloQuery(artistMutation.createArtist, { artist: formatForSave(artist) })
+      apolloQuery(genreMutation.createGenre, { genre: formatForSave(genre) })
         .then((response) => {
-          resolve(response.data.createArtist);
+          resolve(response.data.createGenre);
         })
         .catch((error) => {
           reject(error);
@@ -26,14 +25,14 @@ export const createArtist = (artist) =>
     }
   });
 
-export const disableArtist = (artistId) =>
+export const deleteGenre = (genreId) =>
   new Promise((resolve, reject) => {
-    if (!artistId) {
+    if (!genreId) {
       reject();
     } else {
-      apolloQuery(artistMutation.disableArtist, { artistId })
+      apolloQuery(genreMutation.deleteGenre, { genreId })
         .then((response) => {
-          resolve(response.data.disableArtist);
+          resolve(response.data.deleteGenre);
         })
         .catch((error) => {
           reject(error);
@@ -41,14 +40,14 @@ export const disableArtist = (artistId) =>
     }
   });
 
-export const deleteArtist = (artistId) =>
+export const disableGenre = (genreId) =>
   new Promise((resolve, reject) => {
-    if (!artistId) {
+    if (!genreId) {
       reject();
     } else {
-      apolloQuery(artistMutation.deleteArtist, { artistId })
+      apolloQuery(genreMutation.disableGenre, { genreId })
         .then((response) => {
-          resolve(response.data.deleteArtist);
+          resolve(response.data.disableGenre);
         })
         .catch((error) => {
           reject(error);
@@ -56,14 +55,14 @@ export const deleteArtist = (artistId) =>
     }
   });
 
-export const enableArtist = (artistId) =>
+export const enableGenre = (genreId) =>
   new Promise((resolve, reject) => {
-    if (!artistId) {
+    if (!genreId) {
       reject();
     } else {
-      apolloQuery(artistMutation.enableArtist, { artistId })
+      apolloQuery(genreMutation.enableGenre, { genreId })
         .then((response) => {
-          resolve(response.data.enableArtist);
+          resolve(response.data.enableGenre);
         })
         .catch((error) => {
           reject(error);
@@ -71,14 +70,14 @@ export const enableArtist = (artistId) =>
     }
   });
 
-export const restoreArtist = (artistId) =>
+export const restoreGenre = (genreId) =>
   new Promise((resolve, reject) => {
-    if (!artistId) {
+    if (!genreId) {
       reject();
     } else {
-      apolloQuery(artistMutation.restoreArtist, { artistId })
+      apolloQuery(genreMutation.restoreGenre, { genreId })
         .then((response) => {
-          resolve(response.data.restoreArtist);
+          resolve(response.data.restoreGenre);
         })
         .catch((error) => {
           reject(error);
@@ -86,30 +85,30 @@ export const restoreArtist = (artistId) =>
     }
   });
 
-export const searchArtistsByFilter = (filter = {}) =>
+export const searchGenreByFilter = (filter = {}) =>
   new Promise((resolve, reject) => {
-    apolloQuery(artistQueries.artists, {
+    apolloQuery(genreQueries.genres, {
       _id: filter._id,
       name: filter.name,
       active: filter.active,
       deleted: filter.deleted,
     })
       .then((response) => {
-        resolve(response.data.artists);
+        resolve(response.data.genres);
       })
       .catch((error) => {
         reject(error);
       });
   });
 
-export const updateArtist = (artist) =>
+export const updateGenre = (genre) =>
   new Promise((resolve, reject) => {
-    if (!artist || !artist._id || !artist.name) {
+    if (!genre || !genre._id || !genre.name) {
       reject(WRONG_PARAMS);
     } else {
-      apolloQuery(artistMutation.updateArtist, { artist: formatForSave(artist) })
+      apolloQuery(genreMutation.updateGenre, { genre: formatForSave(genre) })
         .then((response) => {
-          resolve(response.data.updateArtist);
+          resolve(response.data.updateGenre);
         })
         .catch((error) => {
           reject(error);
