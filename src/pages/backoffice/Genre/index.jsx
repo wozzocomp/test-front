@@ -4,6 +4,7 @@ import { translate } from '../../../utils/translate/translator';
 import ActiveInactiveIcon from '../../../components/base/ActiveInactiveIcon';
 import forms from '../../../utils/forms';
 import Page from '../../../components/base/Page';
+import genresFilter from '../../../actions/genre';
 
 const BackofficeGenrePage = () => {
   const [ genres, setGenres ] = useState([]);
@@ -61,6 +62,18 @@ const BackofficeGenrePage = () => {
     return res;
   };
 
+  const onSearch = (filter) => {
+    setLoading(true);
+    genresFilter(filter)
+      .then((newGenres) => {
+        setGenres(newGenres);
+        setLoading(false);
+      })
+      .catch(() => {
+        setLoading(false);
+      });
+  };
+
   useEffect(() => {
     if (!showSure) {
       setSelectedGenre(null);
@@ -84,8 +97,7 @@ const BackofficeGenrePage = () => {
         showDelete={false}
         title={translate('genre.genres')}
         //  onSave={onSave}
-        //  onSearch={onSearch}
-      >
+        onSearch={onSearch}>
         <GenericBackofficeElement
           field="_id"
           filterField="_id"
