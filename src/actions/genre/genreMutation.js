@@ -9,6 +9,15 @@ const createGenre = gql`
   }
 `;
 
+const updateGenre = gql`
+  mutation updateGenre($genre: GenreInput!){
+    updateGenre(genre: $genre) {
+      ${genre}
+    }
+  }
+`;
+
 export default {
   createGenre,
+  updateGenre,
 };

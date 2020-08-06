@@ -104,7 +104,7 @@ export const searchArtistsByFilter = (filter = {}) =>
 
 export const updateArtist = (artist) =>
   new Promise((resolve, reject) => {
-    if (!artist || !artist?._id || !artist?.name) {
+    if (!artist || !artist._id || !artist.name) {
       reject(WRONG_PARAMS);
     } else {
       apolloQuery(artistMutation.updateArtist, { artist: formatForSave(artist) })

@@ -40,3 +40,18 @@ export const searchGenreByFilter = (filter = {}) =>
         reject(error);
       });
   });
+
+export const updateGenre = (genre) =>
+  new Promise((resolve, reject) => {
+    if (!genre || !genre._id || !genre.name) {
+      reject(WRONG_PARAMS);
+    } else {
+      apolloQuery(genreMutation.updateGenre, { genre: formatForSave(genre) })
+        .then((response) => {
+          resolve(response.data.updateGenre);
+        })
+        .catch((error) => {
+          reject(error);
+        });
+    }
+  });

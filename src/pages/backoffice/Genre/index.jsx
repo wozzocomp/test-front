@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { GenericBackoffice, GenericBackofficeElement, GENERIC_TYPES, SureModal } from '@wozzocomp/base-comps';
 import { showSuccessToast, showErrorToast } from '../../../utils/toasts';
 import { translate } from '../../../utils/translate/translator';
-import { createGenre, searchGenreByFilter } from '../../../actions/genre';
+import { createGenre, searchGenreByFilter, updateGenre } from '../../../actions/genre';
 import ActiveInactiveIcon from '../../../components/base/ActiveInactiveIcon';
 import forms from '../../../utils/forms';
 import Page from '../../../components/base/Page';
@@ -83,16 +83,25 @@ const BackofficeGenrePage = () => {
 
   const onSave = (genre, cb) => {
     setLoadingUpdate(true);
+    let saveFunction = createGenre;
+    let koMessage = 'genre.createKo';
+    let okMessage = 'genre.createOk';
 
-    createGenre(genre)
+    if (genre?._id) {
+      saveFunction = updateGenre;
+      koMessage = 'genre.updateKo';
+      okMessage = 'genre.updateOk';
+    }
+
+    saveFunction(genre)
       .then(() => {
         cb();
         onSearch();
-        showSuccessToast(translate('genre.createOk'));
+        showSuccessToast(translate(okMessage));
         setLoadingUpdate(false);
       })
       .catch(() => {
-        showErrorToast(translate('genre.createKo'));
+        showErrorToast(translate(koMessage));
         setLoadingUpdate(false);
       });
   };
