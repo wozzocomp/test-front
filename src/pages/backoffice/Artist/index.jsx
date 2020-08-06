@@ -226,7 +226,7 @@ const BackofficeArtistsPage = () => {
       {selectedArtist?._id && showSure && (
         <SureModal
           {...forms.modals.sure}
-          header={translate(`user.${sureMode}`)}
+          header={translate(`artist.${sureMode}`)}
           loading={loadingUpdate}
           onAccept={onAcceptSure}
           onHide={() => setShowSure(false)}
