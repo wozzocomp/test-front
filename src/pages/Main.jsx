@@ -16,6 +16,7 @@ import {
   BACKOFFICE_ERRORS_URL,
   BACKOFFICE_USER_URL,
   BACKOFFICE_GENRES_URL,
+  BACKOFFICE_SONGS_URL,
 } from '../utils/urls';
 import { userIsAdminOrMore, userIsSuperadmin } from '../utils/functions';
 import MainBackofficePage from '../containers/backoffice';
@@ -26,6 +27,7 @@ import BackofficeGenrePage from './backoffice/Genre';
 import BackofficeUsersPage from '../containers/backoffice/users';
 import BackofficeUserRolesPage from './backoffice/UserRoles';
 import BackofficeErrorsPage from './backoffice/Errors';
+import BackofficeSongPage from './backoffice/Song';
 import ConnectionErrorPage from './ConnectionError';
 
 const redirectBackofficeSuperadmin = (userRole, component) => {
@@ -83,6 +85,11 @@ const Main = ({ initialize, loading, noConnection, userRole, user }) => {
                     exact
                     path={BACKOFFICE_GENRES_URL}
                     render={() => redirectBackoffice(userRole, BackofficeGenrePage)}
+                  />
+                  <Route
+                    exact
+                    path={BACKOFFICE_SONGS_URL}
+                    render={() => redirectBackoffice(userRole, BackofficeSongPage)}
                   />
                   <Route exact path={BACKOFFICE_USER_URL} render={() => redirectBackoffice(userRole, UserPage)} />
                   <Route

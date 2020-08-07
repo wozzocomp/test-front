@@ -5,6 +5,7 @@ import {
   BACKOFFICE_USER_ROLES_URL,
   BACKOFFICE_ARTISTS_URL,
   BACKOFFICE_GENRES_URL,
+  BACKOFFICE_SONGS_URL,
 } from './urls';
 
 export const ELEMENTS = [
@@ -22,6 +23,11 @@ export const ELEMENTS = [
     icon: 'fas fa-list-music',
     text: translate('navbar.genres'),
     url: BACKOFFICE_GENRES_URL,
+  },
+  {
+    icon: 'fas fa-music',
+    text: translate('navbar.songs'),
+    url: BACKOFFICE_SONGS_URL,
   },
 ];
 
