@@ -13,6 +13,16 @@ export const ELEMENTS = [
     text: translate('navbar.users'),
     url: BACKOFFICE_USERS_URL,
   },
+  {
+    icon: 'fas fa-user-music',
+    text: translate('navbar.artists'),
+    url: BACKOFFICE_ARTISTS_URL,
+  },
+  {
+    icon: 'fas fa-list-music',
+    text: translate('navbar.genres'),
+    url: BACKOFFICE_GENRES_URL,
+  },
 ];
 
 export const SUPERADMIN_ELEMS = [
@@ -25,15 +35,5 @@ export const SUPERADMIN_ELEMS = [
     icon: 'fas fa-user-tag',
     text: translate('navbar.userRoles'),
     url: BACKOFFICE_USER_ROLES_URL,
-  },
-  {
-    icon: 'fas fa-user-music',
-    text: translate('navbar.artists'),
-    url: BACKOFFICE_ARTISTS_URL,
-  },
-  {
-    icon: 'fas fa-list-music',
-    text: translate('navbar.genres'),
-    url: BACKOFFICE_GENRES_URL,
   },
 ];
