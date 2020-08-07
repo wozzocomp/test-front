@@ -1,0 +1,21 @@
+{
+  "activate": "Activate song",
+  "activateSure": "You're going to activate the song",
+  "active": "Active",
+  "createKo": "An error occurred while creating the song",
+  "createOk": "Song created successfully",
+  "deleted": "Deleted",
+  "deleteSure": "You're going to delete the song",
+  "disable": "Disable song",
+  "disableSure": "You're going to disable the song",
+  "enable": "Enable song",
+  "enableSure": "You're going to enable the song",
+  "name": "Name",
+  "noSongsFound": "No songs found",
+  "restore": "Restore song",
+  "restoreSure": "You're going to restore the song",
+  "song": "Song",
+  "songs": "Songs",
+  "updateKo": "An error occurred while updating the song",
+  "updateOk": "Song updated successfully"
+}

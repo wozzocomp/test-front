@@ -1,0 +1,21 @@
+{
+  "activate": "Activar canción",
+  "activateSure": "Va a activar la canción",
+  "active": "Activo",
+  "createKo": "Ha habido un error al crear la canción",
+  "createOk": "El canción se ha creado correctamente",
+  "deleted": "Eliminado",
+  "deleteSure": "Va a eliminar la canción",
+  "disable": "Desactivar canción",
+  "disableSure": "Va a desactivar la canción",
+  "enable": "Activar canción",
+  "enableSure": "Va a activar la canción",
+  "name": "Nombre",
+  "noGendersFound": "No se ha encontrado ningún canción",
+  "restore": "Restaurar canción",
+  "restoreSure": "Va a restaurar al canción",
+  "song": "Canción",
+  "songs": "Canciones",
+  "updateKo": "Ha habido un error al actualizar la canción",
+  "updateOk": "La canción se ha actualizado correctamente"
+}

@@ -3,7 +3,7 @@
   "activateSure": "You're going to activate the genre",
   "active": "Active",
   "createKo": "An error occurred while creating the genre",
-  "createOk": "Music genre created successfully",
+  "createOk": "Genre created successfully",
   "deleted": "Deleted",
   "deleteSure": "You're going to delete the genre",
   "disable": "Disable genre",
@@ -17,5 +17,5 @@
   "restore": "Restore genre",
   "restoreSure": "You're going to restore the genre",
   "updateKo": "An error occurred while updating the genre",
-  "updateOk": "Music genre updated successfully"
+  "updateOk": "Genre updated successfully"
 }
