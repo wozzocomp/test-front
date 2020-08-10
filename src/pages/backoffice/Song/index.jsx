@@ -4,7 +4,15 @@ import { translate } from '../../../utils/translate/translator';
 import ActiveInactiveIcon from '../../../components/base/ActiveInactiveIcon';
 import forms from '../../../utils/forms';
 import Page from '../../../components/base/Page';
-import { createSong, searchSongByFilter, updateSong, deleteSong, disableSong, enableSong } from '../../../actions/song';
+import {
+  createSong,
+  searchSongByFilter,
+  updateSong,
+  deleteSong,
+  disableSong,
+  enableSong,
+  restoreSong,
+} from '../../../actions/song';
 import { isFunction } from '../../../utils/functions';
 import { showSuccessToast, showErrorToast } from '../../../utils/toasts';
 import './index.scss';
@@ -120,6 +128,9 @@ const BackofficeSongPage = () => {
     }
     if (SURE_MODES.ENABLE === sureMode) {
       call = enableSong;
+    }
+    if (SURE_MODES.RESTORE === sureMode) {
+      call = restoreSong;
     }
 
     if (isFunction(call)) {

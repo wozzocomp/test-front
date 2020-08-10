@@ -77,6 +77,21 @@ export const enableSong = (songId) =>
     }
   });
 
+export const restoreSong = (songId) =>
+  new Promise((resolve, reject) => {
+    if (!songId) {
+      reject();
+    } else {
+      apolloQuery(songMutation.restoreSong, { songId })
+        .then((response) => {
+          resolve(response.data.restoreSong);
+        })
+        .catch((error) => {
+          reject(error);
+        });
+    }
+  });
+
 export const searchSongByFilter = ({ _id, name, artistId, genreId, releaseDate, album, active, deleted }) =>
   new Promise((resolve, reject) => {
     apolloQuery(songQueries.songs, {
