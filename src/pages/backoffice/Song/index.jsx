@@ -104,6 +104,60 @@ const BackofficeSongPage = () => {
           tableProps={{ sort: true }}
         />
         <GenericBackofficeElement
+          field="artistId"
+          filterField="artistId"
+          filterType={GENERIC_TYPES.input}
+          icon="fas fa-user-music"
+          label={translate('song.artist')}
+          modalType={GENERIC_TYPES.input}
+          tableProps={{ sort: true }}
+        />
+        <GenericBackofficeElement
+          field="genreId"
+          filterField="genreId"
+          filterType={GENERIC_TYPES.input}
+          icon="fas fa-list-music"
+          label={translate('song.genre')}
+          modalType={GENERIC_TYPES.input}
+          tableProps={{ sort: true }}
+        />
+        <GenericBackofficeElement
+          field="releaseDate"
+          filterField="releaseDate"
+          filterType={GENERIC_TYPES.datepicker}
+          icon="fad fa-calendar-alt"
+          label={translate('song.releaseDate')}
+          modalType={GENERIC_TYPES.datepicker}
+          tableProps={{ sort: true }}
+        />
+        <GenericBackofficeElement
+          field="album"
+          filterField="album"
+          filterType={GENERIC_TYPES.input}
+          icon="far fa-album"
+          label={translate('song.album')}
+          modalType={GENERIC_TYPES.input}
+          tableProps={{ sort: true }}
+        />
+        <GenericBackofficeElement
+          field="imgUrl"
+          filterField="imgUrl"
+          hideOnFilter
+          icon="far fa-file-image"
+          label={translate('song.image')}
+          modalType={GENERIC_TYPES.dropzone}
+          modalProps={{ previousLoad: true }}
+        />
+        <GenericBackofficeElement
+          field="songUrl"
+          filterField="songUrl"
+          hideOnFilter
+          icon="fal fa-file-music"
+          label={translate('song.songUrl')}
+          modalType={GENERIC_TYPES.dropzone}
+          modalProps={{ previousLoad: true }}
+        />
+        <GenericBackofficeElement
           field="active"
           filterField="active"
           filterProps={{ enableHalfChecked: true }}
