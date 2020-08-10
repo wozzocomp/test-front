@@ -32,6 +32,21 @@ export const createSong = (song, imgUrl, songUrl) =>
     }
   });
 
+export const deleteSong = (songId) =>
+  new Promise((resolve, reject) => {
+    if (!songId) {
+      reject();
+    } else {
+      apolloQuery(songMutation.deleteSong, { songId })
+        .then((response) => {
+          resolve(response.data.deleteSong);
+        })
+        .catch((error) => {
+          reject(error);
+        });
+    }
+  });
+
 export const searchSongByFilter = ({ _id, name, artistId, genreId, releaseDate, album, active, deleted }) =>
   new Promise((resolve, reject) => {
     apolloQuery(songQueries.songs, {

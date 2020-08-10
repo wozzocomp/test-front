@@ -4,7 +4,7 @@ import { translate } from '../../../utils/translate/translator';
 import ActiveInactiveIcon from '../../../components/base/ActiveInactiveIcon';
 import forms from '../../../utils/forms';
 import Page from '../../../components/base/Page';
-import { createSong, searchSongByFilter, updateSong } from '../../../actions/song';
+import { createSong, searchSongByFilter, updateSong, deleteSong } from '../../../actions/song';
 import { isFunction } from '../../../utils/functions';
 import { showSuccessToast, showErrorToast } from '../../../utils/toasts';
 import './index.scss';
@@ -106,6 +106,29 @@ const BackofficeSongPage = () => {
         showErrorToast(translate(koMessage));
         setLoadingUpdate(false);
       });
+  };
+
+  const onAcceptSure = () => {
+    setLoadingUpdate(true);
+    let call = null;
+
+    if (SURE_MODES.DELETE === sureMode) {
+      call = deleteSong;
+    }
+
+    if (isFunction(call)) {
+      call(selectedSong._id)
+        .then(() => {
+          onSearch();
+          setShowSure(false);
+          showSuccessToast(translate('song.updateOk'));
+          setLoadingUpdate(false);
+        })
+        .catch(() => {
+          showErrorToast(translate('song.updateKo'));
+          setLoadingUpdate(false);
+        });
+    }
   };
 
   return (
@@ -225,8 +248,8 @@ const BackofficeSongPage = () => {
         <SureModal
           {...forms.modals.sure}
           header={translate(`song.${sureMode}`)}
-          // loading={loadingUpdate}
-          // onAccept={onAcceptSure}
+          loading={loadingUpdate}
+          onAccept={onAcceptSure}
           onHide={() => setShowSure(false)}
           show={showSure}>
           <p>
