@@ -186,7 +186,7 @@ const BackofficeSongPage = () => {
           hideOnFilter
           icon="far fa-file-image"
           label={translate('song.image')}
-          modalProps={{ previousLoad: true, accept: 'image/*' }}
+          modalProps={{ showPreview: true, accept: 'image/*' }}
           modalType={GENERIC_TYPES.dropzone}
           tableFormatter={(image) => <img style={{ width: '100%' }} src={image} alt={image} />}
         />
@@ -197,7 +197,7 @@ const BackofficeSongPage = () => {
           hideOnTable
           icon="fal fa-file-music"
           label={translate('song.songUrl')}
-          modalProps={{ previousLoad: true, accept: 'audio/*' }}
+          modalProps={{ showPreview: true, accept: 'audio/*' }}
           modalType={GENERIC_TYPES.dropzone}
         />
         <GenericBackofficeElement
