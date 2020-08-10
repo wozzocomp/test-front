@@ -4,7 +4,7 @@ import { translate } from '../../../utils/translate/translator';
 import ActiveInactiveIcon from '../../../components/base/ActiveInactiveIcon';
 import forms from '../../../utils/forms';
 import Page from '../../../components/base/Page';
-import createSong from '../../../actions/song';
+import { createSong, searchSongByFilter } from '../../../actions/song';
 import { isFunction } from '../../../utils/functions';
 import { showSuccessToast, showErrorToast } from '../../../utils/toasts';
 
@@ -70,6 +70,18 @@ const BackofficeSongPage = () => {
     }
   }, [ showSure ]);
 
+  const onSearch = (filter) => {
+    setLoading(true);
+    searchSongByFilter(filter)
+      .then((newSongs) => {
+        setSongs(newSongs);
+        setLoading(false);
+      })
+      .catch(() => {
+        setLoading(false);
+      });
+  };
+
   const onSave = (song, cb) => {
     setLoadingUpdate(true);
     createSong(song, song.imgUrl, song.songUrl)
@@ -100,7 +112,7 @@ const BackofficeSongPage = () => {
         showDelete={false}
         title={translate('song.songs')}
         onSave={onSave}
-        // onSearch={onSearch}
+        onSearch={onSearch}
         previousLoad>
         <GenericBackofficeElement
           field="_id"
