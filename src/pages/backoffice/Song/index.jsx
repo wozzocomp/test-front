@@ -4,11 +4,14 @@ import { translate } from '../../../utils/translate/translator';
 import ActiveInactiveIcon from '../../../components/base/ActiveInactiveIcon';
 import forms from '../../../utils/forms';
 import Page from '../../../components/base/Page';
+import createSong from '../../../actions/song';
 import { isFunction } from '../../../utils/functions';
+import { showSuccessToast, showErrorToast } from '../../../utils/toasts';
 
 const BackofficeSongPage = () => {
   const [ songs, setSongs ] = useState([]);
   const [ loading, setLoading ] = useState(false);
+  const [ loadingUpdate, setLoadingUpdate ] = useState(false);
   const [ selectedSong, setSelectedSong ] = useState(null);
   const [ showSure, setShowSure ] = useState(false);
   const [ sureMode, setSureMode ] = useState(null);
@@ -67,6 +70,20 @@ const BackofficeSongPage = () => {
     }
   }, [ showSure ]);
 
+  const onSave = (song, cb) => {
+    setLoadingUpdate(true);
+    createSong(song, song.imgUrl, song.songUrl)
+      .then(() => {
+        cb();
+        showSuccessToast(translate('song.createOk'));
+        setLoadingUpdate(false);
+      })
+      .catch(() => {
+        showErrorToast(translate('song.createKo'));
+        setLoadingUpdate(false);
+      });
+  };
+
   return (
     <Page id="backoffice-songs-page" backoffice title={translate('navbar.songs')}>
       <GenericBackoffice
@@ -82,9 +99,9 @@ const BackofficeSongPage = () => {
         objects={songs}
         showDelete={false}
         title={translate('song.songs')}
-        // onSave={onSave}
+        onSave={onSave}
         // onSearch={onSearch}
-      >
+        previousLoad>
         <GenericBackofficeElement
           field="_id"
           filterField="_id"
