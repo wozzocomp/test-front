@@ -7,6 +7,7 @@ import Page from '../../../components/base/Page';
 import { createSong, searchSongByFilter } from '../../../actions/song';
 import { isFunction } from '../../../utils/functions';
 import { showSuccessToast, showErrorToast } from '../../../utils/toasts';
+import './index.scss';
 
 const BackofficeSongPage = () => {
   const [ songs, setSongs ] = useState([]);
