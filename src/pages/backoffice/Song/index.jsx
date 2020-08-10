@@ -4,7 +4,7 @@ import { translate } from '../../../utils/translate/translator';
 import ActiveInactiveIcon from '../../../components/base/ActiveInactiveIcon';
 import forms from '../../../utils/forms';
 import Page from '../../../components/base/Page';
-import { createSong, searchSongByFilter } from '../../../actions/song';
+import { createSong, searchSongByFilter, updateSong } from '../../../actions/song';
 import { isFunction } from '../../../utils/functions';
 import { showSuccessToast, showErrorToast } from '../../../utils/toasts';
 import './index.scss';
@@ -71,7 +71,7 @@ const BackofficeSongPage = () => {
     }
   }, [ showSure ]);
 
-  const onSearch = (filter) => {
+  const onSearch = (filter = {}) => {
     setLoading(true);
     searchSongByFilter(filter)
       .then((newSongs) => {
@@ -85,14 +85,25 @@ const BackofficeSongPage = () => {
 
   const onSave = (song, cb) => {
     setLoadingUpdate(true);
-    createSong(song, song.imgUrl, song.songUrl)
+    let saveFunction = createSong;
+    let okMessage = 'song.createOk';
+    let koMessage = 'song.createKo';
+
+    if (song?._id) {
+      saveFunction = updateSong;
+      koMessage = 'song.updateKo';
+      okMessage = 'song.updateOk';
+    }
+
+    saveFunction(song, song.imgUrl, song.songUrl)
       .then(() => {
         cb();
-        showSuccessToast(translate('song.createOk'));
+        onSearch();
+        showSuccessToast(translate(okMessage));
         setLoadingUpdate(false);
       })
       .catch(() => {
-        showErrorToast(translate('song.createKo'));
+        showErrorToast(translate(koMessage));
         setLoadingUpdate(false);
       });
   };

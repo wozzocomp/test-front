@@ -6,9 +6,16 @@ mutation createSong($song: SongInput!, $imgUrl: Upload, $songUrl: Upload){
   createSong(song: $song, imgUrl: $imgUrl, songUrl: $songUrl) {
     ${song}
   }
-}
-`;
+}`;
+
+const updateSong = gql`
+mutation updateSong($song: SongInput!, $imgUrl: Upload, $songUrl: Upload){
+  updateSong(song: $song, imgUrl: $imgUrl, songUrl: $songUrl) {
+    ${song}
+  }
+}`;
 
 export default {
   createSong,
+  updateSong,
 };
