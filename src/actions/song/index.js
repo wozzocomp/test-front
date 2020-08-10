@@ -2,7 +2,7 @@ import { apolloQuery } from '../../utils/ApiWrapper';
 import { isObject } from '../../utils/functions';
 import { WRONG_PARAMS } from '../../utils/constants';
 import songMutation from './songMutation';
-import songQuery from './songQueries';
+import songQueries from './songQueries';
 
 const formatForSave = ({ _id, name, artistId, genreId, releaseDate, album, songUrl, imgUrl, active, deleted }) => ({
   _id,
@@ -12,7 +12,7 @@ const formatForSave = ({ _id, name, artistId, genreId, releaseDate, album, songU
   releaseDate,
   album,
   songUrl: isObject(songUrl) ? null : songUrl,
-  imgUrl: isObject(songUrl) ? null : imgUrl,
+  imgUrl: isObject(imgUrl) ? null : imgUrl,
   active,
   deleted,
 });
@@ -34,7 +34,7 @@ export const createSong = (song, imgUrl, songUrl) =>
 
 export const searchSongByFilter = ({ _id, name, artistId, genreId, releaseDate, album, active, deleted }) =>
   new Promise((resolve, reject) => {
-    apolloQuery(songQuery.songs, {
+    apolloQuery(songQueries.songs, {
       _id,
       name,
       artistId,
@@ -50,4 +50,22 @@ export const searchSongByFilter = ({ _id, name, artistId, genreId, releaseDate, 
       .catch((error) => {
         reject(error);
       });
+  });
+
+export const updateSong = (song, imgUrl, songUrl) =>
+  new Promise((resolve, reject) => {
+    if (!song || !song._id) {
+      reject(WRONG_PARAMS);
+    } else {
+      imgUrl = isObject(imgUrl) ? imgUrl : null;
+      songUrl = isObject(songUrl) ? songUrl : null;
+
+      apolloQuery(songMutation.updateSong, { song: formatForSave(song), imgUrl, songUrl })
+        .then((response) => {
+          resolve(response.data.updateSong);
+        })
+        .catch((error) => {
+          reject(error);
+        });
+    }
   });
