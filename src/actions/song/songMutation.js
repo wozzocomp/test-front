@@ -22,6 +22,13 @@ const disableSong = gql`
     }
   }`;
 
+const enableSong = gql`
+    mutation enableSong($songId: ID!) {
+      enableSong(songId: $songId){
+        ${song}
+      }
+    }`;
+
 const updateSong = gql`
 mutation updateSong($song: SongInput!, $imgUrl: Upload, $songUrl: Upload){
   updateSong(song: $song, imgUrl: $imgUrl, songUrl: $songUrl) {
@@ -32,6 +39,7 @@ mutation updateSong($song: SongInput!, $imgUrl: Upload, $songUrl: Upload){
 export default {
   createSong,
   deleteSong,
+  enableSong,
   disableSong,
   updateSong,
 };
