@@ -1,15 +1,16 @@
+import artist from './artist';
+import genre from './genre';
+
 export default `
 _id
 name
 imgUrl
 songUrl
 artist {
-  name
-  _id
+  ${artist}
 }
 genre {
-  name
-  _id
+  ${genre}
 }
 releaseDate
 album
