@@ -446,7 +446,7 @@ const BackofficeSongPage = () => {
               setSelectedSong({ ...selectedSong, album });
             }}
           />
-          <div className="example-section">
+          <div className="dropzone-title">
             <h2>{translate('song.image')}</h2>
             <Dropzone
               value={selectedSong?.imgUrl}
@@ -457,7 +457,7 @@ const BackofficeSongPage = () => {
               }}
             />
           </div>
-          <div className="example-section">
+          <div className="dropzone-title">
             <h2>{translate('song.songUrl')}</h2>
             <Dropzone
               value={selectedSong?.songUrl}
