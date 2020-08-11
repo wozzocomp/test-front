@@ -40,7 +40,7 @@ const BackofficeSongsPage = () => {
   const [ loadingUpdate, setLoadingUpdate ] = useState(false);
   const [ selected, setSelected ] = useState([]);
   const [ selectedModal, setSelectedModal ] = useState([]);
-  const [ selectedSong, setSelectedSong ] = useState(null);
+  const [ selectedSong, setSelectedSong ] = useState({});
   const [ showModal, setShowModal ] = useState(false);
   const [ showSure, setShowSure ] = useState(false);
   const [ songs, setSongs ] = useState([]);
