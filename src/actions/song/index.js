@@ -92,14 +92,13 @@ export const restoreSong = (songId) =>
     }
   });
 
-export const searchSongByFilter = ({ _id, name, artist, genre, releaseDate, album, active, deleted }) =>
+export const searchSongByFilter = ({ _id, name, artist, genre, album, active, deleted }) =>
   new Promise((resolve, reject) => {
     apolloQuery(songQueries.songs, {
       _id,
       name,
       artistId: artist?._id || null,
       genreId: genre?._id || null,
-      releaseDate,
       album,
       active,
       deleted,
