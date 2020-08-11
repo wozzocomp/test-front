@@ -32,7 +32,7 @@ import ActiveInactiveIcon from '../../../components/base/ActiveInactiveIcon';
 import forms from '../../../utils/forms';
 import Page from '../../../components/base/Page';
 
-const BackofficeSongPage = () => {
+const BackofficeSongsPage = () => {
   const [ filtered, setFiltered ] = useState([]);
   const [ filteredModal, setFilteredModal ] = useState([]);
   const [ genres, setGenres ] = useState([]);
@@ -474,4 +474,4 @@ const BackofficeSongPage = () => {
   );
 };
 
-export default BackofficeSongPage;
+export default BackofficeSongsPage;
