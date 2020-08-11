@@ -35,7 +35,7 @@ export const createSong = (song, imgUrl, songUrl) =>
 export const deleteSong = (songId) =>
   new Promise((resolve, reject) => {
     if (!songId) {
-      reject();
+      reject(WRONG_PARAMS);
     } else {
       apolloQuery(songMutation.deleteSong, { songId })
         .then((response) => {
@@ -50,7 +50,7 @@ export const deleteSong = (songId) =>
 export const disableSong = (songId) =>
   new Promise((resolve, reject) => {
     if (!songId) {
-      reject();
+      reject(WRONG_PARAMS);
     } else {
       apolloQuery(songMutation.disableSong, { songId })
         .then((response) => {
@@ -65,7 +65,7 @@ export const disableSong = (songId) =>
 export const enableSong = (songId) =>
   new Promise((resolve, reject) => {
     if (!songId) {
-      reject();
+      reject(WRONG_PARAMS);
     } else {
       apolloQuery(songMutation.enableSong, { songId })
         .then((response) => {
@@ -80,7 +80,7 @@ export const enableSong = (songId) =>
 export const restoreSong = (songId) =>
   new Promise((resolve, reject) => {
     if (!songId) {
-      reject();
+      reject(WRONG_PARAMS);
     } else {
       apolloQuery(songMutation.restoreSong, { songId })
         .then((response) => {
