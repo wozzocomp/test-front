@@ -237,7 +237,7 @@ const BackofficeSongsPage = () => {
               noResultsText={translate('song.noArtistsFound')}
               noSearchText={translate('song.noSearchText')}
               onAddOption={(option, idx, newOptions) => {
-                setFiltered(filtered.filter((el) => el.value !== option.value));
+                setFiltered(filtered.filter((el) => el._id !== option._id));
                 setSelected(newOptions);
               }}
               onRemoveSelected={() => {
@@ -267,7 +267,7 @@ const BackofficeSongsPage = () => {
               noResultsText={translate('song.noArtistsFound')}
               noSearchText={translate('song.noSearchText')}
               onAddOption={(option, idx, newOptions) => {
-                setFilteredModal(filteredModal.filter((el) => el.value !== option.value));
+                setFilteredModal(filteredModal.filter((el) => el._id !== option._id));
                 setSelectedModal(newOptions);
               }}
               onRemoveSelected={() => {
@@ -395,7 +395,7 @@ const BackofficeSongsPage = () => {
             noResultsText={translate('song.noArtistsFound')}
             noSearchText={translate('song.noSearchText')}
             onAddOption={(option, idx, newOptions) => {
-              setFilteredModal(filteredModal.filter((el) => el.value !== option.value));
+              setFilteredModal(filteredModal.filter((el) => el._id !== option._id));
               setSelectedModal(newOptions);
             }}
             onRemoveSelected={() => {
