@@ -63,7 +63,7 @@ const BackofficeSongsPage = () => {
           onClick: () => {
             setSelectedSong(song);
             setShowModal(true);
-            setSelectedModal([ song.artist ]);
+            setSelectedModal([ song?.artist ]);
           },
         },
         {
@@ -105,7 +105,7 @@ const BackofficeSongsPage = () => {
 
   useEffect(() => {
     if (!showSure) {
-      setSelectedSong(null);
+      setSelectedSong({});
     }
   }, [ showSure ]);
 
