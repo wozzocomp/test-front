@@ -86,6 +86,17 @@ export const restoreArtist = (artistId) =>
     }
   });
 
+export const searchArtists = (filter) =>
+  new Promise((resolve, reject) => {
+    apolloQuery(artistQueries.searchArtists, { filter })
+      .then((response) => {
+        resolve(response.data.searchArtists);
+      })
+      .catch((error) => {
+        reject(error);
+      });
+  });
+
 export const searchArtistsByFilter = (filter = {}) =>
   new Promise((resolve, reject) => {
     apolloQuery(artistQueries.artists, {
