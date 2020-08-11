@@ -1,12 +1,18 @@
 export default `
-    _id
-    name
-    imgUrl
-    songUrl
-    artistId
-    genreId
-    releaseDate
-    album
-    active
-    deleted
+_id
+name
+imgUrl
+songUrl
+artist {
+  name
+  _id
+}
+genre {
+  name
+  _id
+}
+releaseDate
+album
+active
+deleted
 `;

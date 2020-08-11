@@ -1,8 +1,11 @@
 #backoffice-songs-page {
+  .example-section,
   .wozzo-dropzone {
     margin-top: 2.5rem;
+    margin-left: 2.5rem;
   }
 
+  .example-section:last-child,
   .wozzo-dropzone:last-child {
     margin-bottom: 2.5rem;
   }

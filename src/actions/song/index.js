@@ -4,11 +4,11 @@ import { WRONG_PARAMS } from '../../utils/constants';
 import songMutation from './songMutation';
 import songQueries from './songQueries';
 
-const formatForSave = ({ _id, name, artistId, genreId, releaseDate, album, songUrl, imgUrl, active, deleted }) => ({
+const formatForSave = ({ _id, name, artist, genre, releaseDate, album, songUrl, imgUrl, active, deleted }) => ({
   _id,
   name,
-  artistId,
-  genreId,
+  artistId: artist._id,
+  genreId: genre._id,
   releaseDate,
   album,
   songUrl: isObject(songUrl) ? null : songUrl,
@@ -92,13 +92,13 @@ export const restoreSong = (songId) =>
     }
   });
 
-export const searchSongByFilter = ({ _id, name, artistId, genreId, releaseDate, album, active, deleted }) =>
+export const searchSongByFilter = ({ _id, name, artist, genre, releaseDate, album, active, deleted }) =>
   new Promise((resolve, reject) => {
     apolloQuery(songQueries.songs, {
       _id,
       name,
-      artistId,
-      genreId,
+      artistId: artist?._id || null,
+      genreId: genre?._id || null,
       releaseDate,
       album,
       active,

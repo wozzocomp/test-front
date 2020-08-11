@@ -1,28 +1,49 @@
 import React, { useState, useEffect } from 'react';
-import { GenericBackoffice, GenericBackofficeElement, GENERIC_TYPES, SureModal } from '@wozzocomp/base-comps';
-import { translate } from '../../../utils/translate/translator';
-import ActiveInactiveIcon from '../../../components/base/ActiveInactiveIcon';
-import forms from '../../../utils/forms';
-import Page from '../../../components/base/Page';
+import {
+  Button,
+  BUTTON_TYPES,
+  Dropzone,
+  GenericBackoffice,
+  GenericBackofficeElement,
+  GENERIC_TYPES,
+  Input,
+  Modal,
+  Selector,
+  SureModal,
+  Search,
+  Datepicker,
+} from '@wozzocomp/base-comps';
 import {
   createSong,
-  searchSongByFilter,
-  updateSong,
   deleteSong,
   disableSong,
   enableSong,
   restoreSong,
+  searchSongByFilter,
+  updateSong,
 } from '../../../actions/song';
-import { isFunction } from '../../../utils/functions';
-import { showSuccessToast, showErrorToast } from '../../../utils/toasts';
 import './index.scss';
+import { isFunction } from '../../../utils/functions';
+import { searchArtists } from '../../../actions/artist';
+import { searchGenreByFilter } from '../../../actions/genre';
+import { showSuccessToast, showErrorToast } from '../../../utils/toasts';
+import { translate } from '../../../utils/translate/translator';
+import ActiveInactiveIcon from '../../../components/base/ActiveInactiveIcon';
+import forms from '../../../utils/forms';
+import Page from '../../../components/base/Page';
 
 const BackofficeSongPage = () => {
-  const [ songs, setSongs ] = useState([]);
+  const [ filtered, setFiltered ] = useState([]);
+  const [ filteredModal, setFilteredModal ] = useState([]);
+  const [ genres, setGenres ] = useState([]);
   const [ loading, setLoading ] = useState(false);
   const [ loadingUpdate, setLoadingUpdate ] = useState(false);
+  const [ selected, setSelected ] = useState([]);
+  const [ selectedModal, setSelectedModal ] = useState([]);
   const [ selectedSong, setSelectedSong ] = useState(null);
+  const [ showModal, setShowModal ] = useState(false);
   const [ showSure, setShowSure ] = useState(false);
+  const [ songs, setSongs ] = useState([]);
   const [ sureMode, setSureMode ] = useState(null);
 
   const SURE_MODES = {
@@ -36,6 +57,15 @@ const BackofficeSongPage = () => {
     let res = [];
     if (song && song._id) {
       res = [
+        {
+          text: translate('common.edit'),
+          icon: 'fal fa-edit',
+          onClick: () => {
+            setSelectedSong(song);
+            setShowModal(true);
+            setSelectedModal([ song.artist ]);
+          },
+        },
         {
           text: song.active ? translate('common.disable') : translate('common.enable'),
           icon: song.active ? 'fas fa-user-times' : 'fas fa-user-check',
@@ -79,8 +109,16 @@ const BackofficeSongPage = () => {
     }
   }, [ showSure ]);
 
+  useEffect(() => {
+    searchGenreByFilter().then((newGenres) => {
+      setGenres(newGenres);
+    });
+  }, []);
+
   const onSearch = (filter = {}) => {
     setLoading(true);
+
+    filter.artist = selected[0] ? selected[0] : null;
     searchSongByFilter(filter)
       .then((newSongs) => {
         setSongs(newSongs);
@@ -96,6 +134,8 @@ const BackofficeSongPage = () => {
     let saveFunction = createSong;
     let okMessage = 'song.createOk';
     let koMessage = 'song.createKo';
+
+    song.artist = selectedModal[0] || song.artist;
 
     if (song?._id) {
       saveFunction = updateSong;
@@ -148,6 +188,10 @@ const BackofficeSongPage = () => {
     }
   };
 
+  const onHide = () => {
+    setShowModal(false);
+  };
+
   return (
     <Page id="backoffice-songs-page" backoffice title={translate('navbar.songs')}>
       <GenericBackoffice
@@ -161,6 +205,7 @@ const BackofficeSongPage = () => {
         extraActions={getExtraActions}
         loading={loading}
         objects={songs}
+        showEdit={false}
         showDelete={false}
         title={translate('song.songs')}
         onSave={onSave}
@@ -168,7 +213,6 @@ const BackofficeSongPage = () => {
         previousLoad>
         <GenericBackofficeElement
           field="_id"
-          filterField="_id"
           filterType={GENERIC_TYPES.input}
           hideOnModal
           icon="fas fa-fingerprint"
@@ -177,7 +221,6 @@ const BackofficeSongPage = () => {
         />
         <GenericBackofficeElement
           field="name"
-          filterField="name"
           filterType={GENERIC_TYPES.input}
           icon="fas fa-signature"
           label={translate('song.name')}
@@ -185,26 +228,81 @@ const BackofficeSongPage = () => {
           tableProps={{ sort: true }}
         />
         <GenericBackofficeElement
-          field="artistId"
-          filterField="artistId"
-          filterType={GENERIC_TYPES.input}
-          icon="fas fa-user-music"
+          field="artist.name"
+          filterField="artist"
+          filterFormatter={() => (
+            <Search
+              inputIcon="fas fa-user-music"
+              maxSelected={1}
+              noResultsText={translate('song.noArtistsFound')}
+              noSearchText={translate('song.noSearchText')}
+              onAddOption={(option, idx, newOptions) => {
+                setFiltered(filtered.filter((el) => el.value !== option.value));
+                setSelected(newOptions);
+              }}
+              onRemoveSelected={() => {
+                setSelected([]);
+              }}
+              onSearch={(val) => {
+                searchArtists(val).then((newArtists) => {
+                  setFiltered(newArtists);
+                });
+              }}
+              optionImageIcon="fas fa-user-music"
+              optionKey="_id"
+              optionTextKey="name"
+              placeholder={translate('song.artist')}
+              removePlayerTooltip={null}
+              results={filtered}
+              selectedOptions={selected}
+              selectedOptionImageIcon="fas fa-user-music"
+            />
+          )}
           label={translate('song.artist')}
-          modalType={GENERIC_TYPES.input}
+          modalField="artist"
+          modalFormatter={() => (
+            <Search
+              inputIcon="fas fa-user-music"
+              maxSelected={1}
+              noResultsText={translate('song.noArtistsFound')}
+              noSearchText={translate('song.noSearchText')}
+              onAddOption={(option, idx, newOptions) => {
+                setFilteredModal(filteredModal.filter((el) => el.value !== option.value));
+                setSelectedModal(newOptions);
+              }}
+              onRemoveSelected={() => {
+                setSelectedModal([]);
+              }}
+              onSearch={(val) => {
+                searchArtists(val).then((newArtists) => {
+                  setFilteredModal(newArtists);
+                });
+              }}
+              optionImageIcon="fas fa-user-music"
+              optionKey="_id"
+              optionTextKey="name"
+              placeholder={translate('song.artist')}
+              removePlayerTooltip={null}
+              results={filteredModal}
+              selectedOptions={selectedModal}
+              selectedOptionImageIcon="fas fa-user-music"
+            />
+          )}
           tableProps={{ sort: true }}
         />
         <GenericBackofficeElement
-          field="genreId"
-          filterField="genreId"
-          filterType={GENERIC_TYPES.input}
+          field="genre.name"
+          filterField="genre"
+          filterType={GENERIC_TYPES.selector}
+          filterProps={{ labelKey: 'name', valueKey: '_id', options: genres }}
           icon="fas fa-list-music"
           label={translate('song.genre')}
-          modalType={GENERIC_TYPES.input}
-          tableProps={{ sort: true }}
+          modalField="genre"
+          modalType={GENERIC_TYPES.selector}
+          modalProps={{ labelKey: 'name', valueKey: '_id', options: genres }}
         />
         <GenericBackofficeElement
           field="releaseDate"
-          filterField="releaseDate"
           filterType={GENERIC_TYPES.datepicker}
           icon="fad fa-calendar-alt"
           label={translate('song.releaseDate')}
@@ -213,7 +311,6 @@ const BackofficeSongPage = () => {
         />
         <GenericBackofficeElement
           field="album"
-          filterField="album"
           filterType={GENERIC_TYPES.input}
           icon="far fa-album"
           label={translate('song.album')}
@@ -222,7 +319,6 @@ const BackofficeSongPage = () => {
         />
         <GenericBackofficeElement
           field="imgUrl"
-          filterField="imgUrl"
           hideOnFilter
           icon="far fa-file-image"
           label={translate('song.image')}
@@ -232,7 +328,6 @@ const BackofficeSongPage = () => {
         />
         <GenericBackofficeElement
           field="songUrl"
-          filterField="songUrl"
           hideOnFilter
           hideOnTable
           icon="fal fa-file-music"
@@ -242,7 +337,6 @@ const BackofficeSongPage = () => {
         />
         <GenericBackofficeElement
           field="active"
-          filterField="active"
           filterProps={{ enableHalfChecked: true }}
           filterType={GENERIC_TYPES.checkbox}
           hideOnModal
@@ -252,7 +346,6 @@ const BackofficeSongPage = () => {
         />
         <GenericBackofficeElement
           field="deleted"
-          filterField="deleted"
           filterProps={{ enableHalfChecked: true }}
           filterType={GENERIC_TYPES.checkbox}
           hideOnModal
@@ -274,6 +367,109 @@ const BackofficeSongPage = () => {
           </p>
         </SureModal>
       )}
+
+      <Modal
+        footer={
+          <div>
+            <Button {...forms.buttons.save} onClick={() => onSave(selectedSong, () => setShowModal(false))} />
+            <Button {...forms.buttons.cancel} onClick={onHide} type={BUTTON_TYPES.gray} inverted />
+          </div>
+        }
+        header={translate('song.editSong')}
+        onHide={onHide}
+        show={showModal}>
+        <form>
+          <Input
+            icon="fas fa-signature"
+            placeholder={translate('song.name')}
+            type="text"
+            value={selectedSong?.name}
+            onChange={(name) => {
+              setSelectedSong({ ...selectedSong, name });
+            }}
+          />
+
+          <Search
+            inputIcon="fas fa-user-music"
+            maxSelected={1}
+            noResultsText={translate('song.noArtistsFound')}
+            noSearchText={translate('song.noSearchText')}
+            onAddOption={(option, idx, newOptions) => {
+              setFilteredModal(filteredModal.filter((el) => el.value !== option.value));
+              setSelectedModal(newOptions);
+            }}
+            onRemoveSelected={() => {
+              setSelectedModal([]);
+            }}
+            onSearch={(val) => {
+              searchArtists(val).then((newArtists) => {
+                setFilteredModal(newArtists);
+              });
+            }}
+            onChange={(artist) => {
+              setSelectedSong({ ...selectedSong, artist });
+            }}
+            optionImageIcon="fas fa-user-music"
+            optionKey="_id"
+            optionTextKey="name"
+            placeholder={translate('song.artist')}
+            removePlayerTooltip={null}
+            results={filteredModal}
+            selectedOptions={selectedModal}
+            selectedOptionImageIcon="fas fa-user-music"
+          />
+          <div>
+            <Selector
+              labelKey="name"
+              valueKey="_id"
+              value={selectedSong?.genre}
+              icon="fas fa-list-music"
+              placeholder={translate('song.genre')}
+              onChange={(genre) => {
+                setSelectedSong({ ...selectedSong, genre });
+              }}
+              options={genres}
+            />
+          </div>
+          <Datepicker
+            placeholder={translate('song.releaseDate')}
+            value={selectedSong?.releaseDate}
+            onChange={(releaseDate) => {
+              setSelectedSong({ ...selectedSong, releaseDate });
+            }}
+          />
+          <Input
+            icon="far fa-album"
+            value={selectedSong?.album}
+            placeholder={translate('song.album')}
+            onChange={(album) => {
+              setSelectedSong({ ...selectedSong, album });
+            }}
+          />
+          <div className="example-section">
+            <h2>{translate('song.image')}</h2>
+            <Dropzone
+              value={selectedSong?.imgUrl}
+              showPreview
+              accept="image/*"
+              onFilesChange={(imgUrl) => {
+                setSelectedSong({ ...selectedSong, imgUrl });
+              }}
+            />
+          </div>
+          <div className="example-section">
+            <h2>{translate('song.songUrl')}</h2>
+            <Dropzone
+              value={selectedSong?.songUrl}
+              showPreview
+              accept="audio/*"
+              onFilesChange={(songUrl) => {
+                setSelectedSong({ ...selectedSong, songUrl });
+              }}
+            />
+          </div>
+        </form>
+      </Modal>
     </Page>
   );
 };
