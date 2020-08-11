@@ -19,7 +19,7 @@ const formatForSave = ({ _id, name, artist, genre, releaseDate, album, songUrl, 
 
 export const createSong = (song, imgUrl, songUrl) =>
   new Promise((resolve, reject) => {
-    if (!song || !song.name || !song.artistId || !song.genreId) {
+    if (!song || !song.name || !song.artist || !song.genre) {
       reject(WRONG_PARAMS);
     } else {
       apolloQuery(songMutation.createSong, { song: formatForSave(song), imgUrl, songUrl })
