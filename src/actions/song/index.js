@@ -7,8 +7,8 @@ import songQueries from './songQueries';
 const formatForSave = ({ _id, name, artist, genre, releaseDate, album, songUrl, imgUrl, active, deleted }) => ({
   _id,
   name,
-  artistId: artist._id,
-  genreId: genre._id,
+  artistId: artist?._id,
+  genreId: genre?._id,
   releaseDate,
   album,
   songUrl: isObject(songUrl) ? null : songUrl,
