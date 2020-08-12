@@ -40,6 +40,10 @@ const BackofficeSongsPage = () => {
   const [ genres, setGenres ] = useState([]);
   const [ loading, setLoading ] = useState(false);
   const [ loadingUpdate, setLoadingUpdate ] = useState(false);
+  const [ modalArtistInputError, setModalArtistInputError ] = useState(false);
+  const [ modalArtistCreateInputError, setModalArtistCreateInputError ] = useState(false);
+  const [ modalGenreInputError, setModalGenreInputError ] = useState(false);
+  const [ modalNameInputError, setModalNameInputError ] = useState(false);
   const [ selected, setSelected ] = useState([]);
   const [ selectedArtistModal, setSelectedArtistModal ] = useState([]);
   const [ selectedSong, setSelectedSong ] = useState({});
@@ -120,6 +124,7 @@ const BackofficeSongsPage = () => {
   const onSearch = (filter = {}) => {
     setLoading(true);
     filter.artist = selected[0] ? selected[0] : null;
+
     searchSongByFilter(filter)
       .then((newSongs) => {
         setSongs(newSongs);
@@ -191,12 +196,45 @@ const BackofficeSongsPage = () => {
 
   const onHide = () => {
     setShowModal(false);
+    setModalNameInputError(false);
+    setModalGenreInputError(false);
+    setModalArtistInputError(false);
+    setSelectedArtistModal([]);
+    setSelectedSong({});
+  };
+
+  const validateSong = ({ name, artist, genre }) => {
+    const errs = { hasErrors: false };
+
+    if (!name || 1 > name?.trim().length) {
+      errs.hasErrors = true;
+      errs.name = true;
+      setModalNameInputError(true);
+    }
+
+    if (!artist || !artist._id) {
+      errs.hasErrors = true;
+      errs.artist = true;
+      if (selectedSong?._id) {
+        setModalArtistInputError(true);
+      } else {
+        setModalArtistCreateInputError(true);
+      }
+    }
+
+    if (!genre || !genre._id) {
+      errs.hasErrors = true;
+      errs.genre = true;
+    }
+
+    return errs;
   };
 
   return (
     <Page id="backoffice-songs-page" backoffice title={translate('navbar.songs')}>
       <GenericBackoffice
         {...forms.backoffice.table}
+        customValidator={validateSong}
         tableProps={{
           ...forms.backoffice.table.tableProps,
           csvFileName: translate('song.songs'),
@@ -230,7 +268,6 @@ const BackofficeSongsPage = () => {
         />
         <GenericBackofficeElement
           field="artist"
-          filterField="artist"
           filterFormatter={() => (
             <Search
               addOptionTooltip={null}
@@ -265,6 +302,7 @@ const BackofficeSongsPage = () => {
           modalFormatter={() => (
             <Search
               addOptionTooltip={null}
+              error={modalArtistCreateInputError}
               inputIcon="fas fa-user-music"
               maxSelected={1}
               noResultsText={translate('song.noArtistsFound')}
@@ -272,6 +310,7 @@ const BackofficeSongsPage = () => {
               onAddOption={(option, idx, newOptions) => {
                 setFilteredModal(filteredModal.filter((el) => el._id !== option._id));
                 setSelectedArtistModal(newOptions);
+                setModalArtistCreateInputError(false);
               }}
               onRemoveSelected={() => {
                 setSelectedArtistModal([]);
@@ -296,7 +335,6 @@ const BackofficeSongsPage = () => {
         />
         <GenericBackofficeElement
           field="genre"
-          filterField="genre"
           filterType={GENERIC_TYPES.selector}
           filterProps={{ labelKey: 'name', valueKey: '_id', options: genres }}
           icon="fas fa-list-music"
@@ -380,7 +418,11 @@ const BackofficeSongsPage = () => {
           <>
             <Button
               {...forms.buttons.save}
-              onClick={() => onSave(selectedSong, () => setShowModal(false))}
+              onClick={() => {
+                if (!validateSong(selectedSong).hasErrors) {
+                  onSave(selectedSong, () => setShowModal(false));
+                }
+              }}
               disabled={loadingUpdate}
             />
             <Button
@@ -398,16 +440,19 @@ const BackofficeSongsPage = () => {
         show={showModal}>
         <form>
           <Input
+            error={modalNameInputError}
             icon="fas fa-signature"
             placeholder={translate('song.name')}
             type="text"
             value={selectedSong?.name}
             onChange={(name) => {
               setSelectedSong({ ...selectedSong, name });
+              setModalNameInputError(false);
             }}
           />
           <Search
             addOptionTooltip={null}
+            error={modalArtistInputError}
             inputIcon="fas fa-user-music"
             maxSelected={1}
             noResultsText={translate('song.noArtistsFound')}
@@ -415,17 +460,17 @@ const BackofficeSongsPage = () => {
             onAddOption={(option, idx, newOptions) => {
               setFilteredModal(filteredModal.filter((el) => el._id !== option._id));
               setSelectedArtistModal(newOptions);
+              setSelectedSong({ ...selectedSong, newOptions });
+              setModalArtistInputError(false);
             }}
             onRemoveSelected={() => {
               setSelectedArtistModal([]);
+              setSelectedSong({ ...selectedSong, artist: null });
             }}
             onSearch={(val) => {
               searchArtists(val).then((newArtists) => {
                 setFilteredModal(newArtists);
               });
-            }}
-            onChange={(artist) => {
-              setSelectedSong({ ...selectedSong, artist });
             }}
             optionImageIcon="fas fa-user-music"
             optionKey="_id"
@@ -438,6 +483,7 @@ const BackofficeSongsPage = () => {
           />
           <>
             <Selector
+              error={modalGenreInputError}
               labelKey="name"
               valueKey="_id"
               value={selectedSong?.genre}
@@ -445,6 +491,7 @@ const BackofficeSongsPage = () => {
               placeholder={translate('song.genre')}
               onChange={(genre) => {
                 setSelectedSong({ ...selectedSong, genre });
+                setModalGenreInputError(false);
               }}
               options={genres}
             />
