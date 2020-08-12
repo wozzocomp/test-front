@@ -1,12 +1,13 @@
+@import '../../../styles/constants.scss';
+
 #backoffice-songs-page {
   .dropzone-title,
   .wozzo-dropzone {
-    margin-top: 2.5rem;
-    margin-left: 2.5rem;
+    margin: $size-lg 0 0 $size-lg;
   }
 
   .dropzone-title:last-child,
   .wozzo-dropzone:last-child {
-    margin-bottom: 2.5rem;
+    margin-bottom: $size-lg;
   }
 }
