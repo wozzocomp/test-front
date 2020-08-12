@@ -232,6 +232,7 @@ const BackofficeSongsPage = () => {
           filterField="artist"
           filterFormatter={() => (
             <Search
+              addOptionTooltip={null}
               inputIcon="fas fa-user-music"
               maxSelected={1}
               noResultsText={translate('song.noArtistsFound')}
@@ -262,6 +263,7 @@ const BackofficeSongsPage = () => {
           modalField="artist"
           modalFormatter={() => (
             <Search
+              addOptionTooltip={null}
               inputIcon="fas fa-user-music"
               maxSelected={1}
               noResultsText={translate('song.noArtistsFound')}
@@ -324,7 +326,7 @@ const BackofficeSongsPage = () => {
           label={translate('song.image')}
           modalProps={{ showPreview: true, accept: 'image/*' }}
           modalType={GENERIC_TYPES.dropzone}
-          tableFormatter={(image) => <img style={{ width: '100%' }} src={image} alt={image} />}
+          tableFormatter={(image) => <img className="table-img" src={image} alt={image} />}
         />
         <GenericBackofficeElement
           field="songUrl"
@@ -390,6 +392,7 @@ const BackofficeSongsPage = () => {
           />
 
           <Search
+            addOptionTooltip={null}
             inputIcon="fas fa-user-music"
             maxSelected={1}
             noResultsText={translate('song.noArtistsFound')}
