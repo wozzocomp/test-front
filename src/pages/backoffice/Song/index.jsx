@@ -13,6 +13,7 @@ import {
   Search,
   Datepicker,
 } from '@wozzocomp/base-comps';
+import moment from 'moment';
 import {
   createSong,
   deleteSong,
@@ -23,6 +24,7 @@ import {
   updateSong,
 } from '../../../actions/song';
 import './index.scss';
+import { DATE_FORMAT, DATE_FORMAT_TO_SHOW } from '../../../utils/constants';
 import { isFunction } from '../../../utils/functions';
 import { searchArtists } from '../../../actions/artist';
 import { searchGenreByFilter } from '../../../actions/genre';
@@ -309,7 +311,9 @@ const BackofficeSongsPage = () => {
           icon="fad fa-calendar-alt"
           label={translate('song.releaseDate')}
           modalType={GENERIC_TYPES.datepicker}
+          modalProps={{ dateFormat: DATE_FORMAT_TO_SHOW }}
           tableProps={{ sort: true }}
+          tableFormatter={(releaseDate) => <p>{moment(releaseDate).format(DATE_FORMAT_TO_SHOW)}</p>}
         />
         <GenericBackofficeElement
           field="album"
@@ -434,6 +438,7 @@ const BackofficeSongsPage = () => {
             />
           </>
           <Datepicker
+            dateFormat={DATE_FORMAT_TO_SHOW}
             placeholder={translate('song.releaseDate')}
             value={selectedSong?.releaseDate}
             onChange={(releaseDate) => {

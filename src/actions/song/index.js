@@ -1,6 +1,7 @@
+import moment from 'moment';
 import { apolloQuery } from '../../utils/ApiWrapper';
 import { isObject } from '../../utils/functions';
-import { WRONG_PARAMS } from '../../utils/constants';
+import { WRONG_PARAMS, DATE_FORMAT } from '../../utils/constants';
 import songMutation from './songMutation';
 import songQueries from './songQueries';
 
@@ -9,7 +10,7 @@ const formatForSave = ({ _id, name, artist, genre, releaseDate, album, songUrl, 
   name,
   artistId: artist?._id,
   genreId: genre?._id,
-  releaseDate,
+  releaseDate: moment(releaseDate).format(DATE_FORMAT),
   album,
   songUrl: isObject(songUrl) ? null : songUrl,
   imgUrl: isObject(imgUrl) ? null : imgUrl,
