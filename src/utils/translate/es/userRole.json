@@ -8,7 +8,8 @@
   "noRolesFound": "No se ha encontrado ningun rol",
   "roles": {
     "superadmin": "Superadministrador",
-    "admin": "Administrador"
+    "admin": "Administrador",
+    "user": "Usuario"
   },
   "translation": "Traducción",
   "updateKo": "Ha habido un error al actualizar el rol",

@@ -1,0 +1,15 @@
+@import '../../../styles/constants.scss';
+
+#backoffice-songs-page {
+  .wozzo-dropzone {
+    margin: $size-lg 0 0 $size-lg;
+  }
+
+  .wozzo-dropzone:last-child {
+    margin-bottom: $size-lg;
+  }
+
+  .table-img {
+    width: 100%;
+  }
+}

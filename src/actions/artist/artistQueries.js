@@ -9,6 +9,16 @@ const artists = gql`
   }
 `;
 
+const searchArtists = gql`
+  query searchArtists($filter: String) {
+    searchArtists(filter: $filter) {
+      ${artist}
+    }
+  }
+
+`;
+
 export default {
   artists,
+  searchArtists,
 };

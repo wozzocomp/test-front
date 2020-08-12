@@ -13,6 +13,12 @@ export const deepCopy = (elem) => JSON.parse(JSON.stringify(elem));
 export const isFunction = (elem) => 'function' === typeof elem;
 
 /**
+ * Return true if is of type object
+ * @param {*} elem
+ */
+export const isObject = (elem) => 'object' === typeof elem;
+
+/**
  * Return if the screen is bigger than 1200px
  */
 export const screenLowerThanXl = () => SCREEN_SIZE_XL >= window.innerWidth;
