@@ -378,11 +378,22 @@ const BackofficeSongsPage = () => {
       <Modal
         footer={
           <>
-            <Button {...forms.buttons.save} onClick={() => onSave(selectedSong, () => setShowModal(false))} />
-            <Button {...forms.buttons.cancel} onClick={onHide} type={BUTTON_TYPES.gray} inverted />
+            <Button
+              {...forms.buttons.save}
+              onClick={() => onSave(selectedSong, () => setShowModal(false))}
+              disabled={loadingUpdate}
+            />
+            <Button
+              {...forms.buttons.cancel}
+              onClick={onHide}
+              type={BUTTON_TYPES.gray}
+              inverted
+              disabled={loadingUpdate}
+            />
           </>
         }
         header={translate('song.editSong')}
+        loading={loadingUpdate}
         onHide={onHide}
         show={showModal}>
         <form>
