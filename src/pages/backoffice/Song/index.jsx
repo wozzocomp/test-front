@@ -372,10 +372,10 @@ const BackofficeSongsPage = () => {
 
       <Modal
         footer={
-          <div>
+          <>
             <Button {...forms.buttons.save} onClick={() => onSave(selectedSong, () => setShowModal(false))} />
             <Button {...forms.buttons.cancel} onClick={onHide} type={BUTTON_TYPES.gray} inverted />
-          </div>
+          </>
         }
         header={translate('song.editSong')}
         onHide={onHide}
@@ -390,7 +390,6 @@ const BackofficeSongsPage = () => {
               setSelectedSong({ ...selectedSong, name });
             }}
           />
-
           <Search
             addOptionTooltip={null}
             inputIcon="fas fa-user-music"
@@ -421,7 +420,7 @@ const BackofficeSongsPage = () => {
             selectedOptions={selectedArtistModal}
             selectedOptionImageIcon="fas fa-user-music"
           />
-          <div>
+          <>
             <Selector
               labelKey="name"
               valueKey="_id"
@@ -433,7 +432,7 @@ const BackofficeSongsPage = () => {
               }}
               options={genres}
             />
-          </div>
+          </>
           <Datepicker
             placeholder={translate('song.releaseDate')}
             value={selectedSong?.releaseDate}
