@@ -326,7 +326,7 @@ const BackofficeSongsPage = () => {
           label={translate('song.image')}
           modalProps={{ showPreview: true, accept: 'image/*' }}
           modalType={GENERIC_TYPES.dropzone}
-          tableFormatter={(image) => <img className="table-img" src={image} alt={image} />}
+          tableFormatter={(image, element) => <img className="table-img" src={image} alt={element.name} />}
         />
         <GenericBackofficeElement
           field="songUrl"
