@@ -24,7 +24,7 @@ import {
   updateSong,
 } from '../../../actions/song';
 import './index.scss';
-import { DATE_FORMAT, DATE_FORMAT_TO_SHOW } from '../../../utils/constants';
+import { DATE_FORMAT_TO_SHOW } from '../../../utils/constants';
 import { isFunction } from '../../../utils/functions';
 import { searchArtists } from '../../../actions/artist';
 import { searchGenreByFilter } from '../../../actions/genre';
@@ -119,7 +119,6 @@ const BackofficeSongsPage = () => {
 
   const onSearch = (filter = {}) => {
     setLoading(true);
-
     filter.artist = selected[0] ? selected[0] : null;
     searchSongByFilter(filter)
       .then((newSongs) => {
@@ -230,7 +229,7 @@ const BackofficeSongsPage = () => {
           tableProps={{ sort: true }}
         />
         <GenericBackofficeElement
-          field="artist.name"
+          field="artist"
           filterField="artist"
           filterFormatter={() => (
             <Search
@@ -293,9 +292,10 @@ const BackofficeSongsPage = () => {
             />
           )}
           tableProps={{ sort: true }}
+          tableFormatter={(artist) => <p>{artist?.name}</p>}
         />
         <GenericBackofficeElement
-          field="genre.name"
+          field="genre"
           filterField="genre"
           filterType={GENERIC_TYPES.selector}
           filterProps={{ labelKey: 'name', valueKey: '_id', options: genres }}
@@ -304,6 +304,7 @@ const BackofficeSongsPage = () => {
           modalField="genre"
           modalType={GENERIC_TYPES.selector}
           modalProps={{ labelKey: 'name', valueKey: '_id', options: genres }}
+          tableFormatter={(genre) => <p>{genre?.name}</p>}
         />
         <GenericBackofficeElement
           field="releaseDate"
