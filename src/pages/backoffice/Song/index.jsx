@@ -39,7 +39,7 @@ const BackofficeSongsPage = () => {
   const [ loading, setLoading ] = useState(false);
   const [ loadingUpdate, setLoadingUpdate ] = useState(false);
   const [ selected, setSelected ] = useState([]);
-  const [ selectedModal, setSelectedModal ] = useState([]);
+  const [ selectedArtistModal, setSelectedArtistModal ] = useState([]);
   const [ selectedSong, setSelectedSong ] = useState({});
   const [ showModal, setShowModal ] = useState(false);
   const [ showSure, setShowSure ] = useState(false);
@@ -63,7 +63,7 @@ const BackofficeSongsPage = () => {
           onClick: () => {
             setSelectedSong(song);
             setShowModal(true);
-            setSelectedModal([ song?.artist ]);
+            setSelectedArtistModal([ song?.artist ]);
           },
         },
         {
@@ -135,7 +135,7 @@ const BackofficeSongsPage = () => {
     let okMessage = 'song.createOk';
     let koMessage = 'song.createKo';
 
-    song.artist = selectedModal[0] || song.artist;
+    song.artist = selectedArtistModal[0] || song.artist;
 
     if (song?._id) {
       saveFunction = updateSong;
@@ -268,10 +268,10 @@ const BackofficeSongsPage = () => {
               noSearchText={translate('song.noSearchText')}
               onAddOption={(option, idx, newOptions) => {
                 setFilteredModal(filteredModal.filter((el) => el._id !== option._id));
-                setSelectedModal(newOptions);
+                setSelectedArtistModal(newOptions);
               }}
               onRemoveSelected={() => {
-                setSelectedModal([]);
+                setSelectedArtistModal([]);
               }}
               onSearch={(val) => {
                 searchArtists(val).then((newArtists) => {
@@ -284,7 +284,7 @@ const BackofficeSongsPage = () => {
               placeholder={translate('song.artist')}
               removePlayerTooltip={null}
               results={filteredModal}
-              selectedOptions={selectedModal}
+              selectedOptions={selectedArtistModal}
               selectedOptionImageIcon="fas fa-user-music"
             />
           )}
@@ -396,10 +396,10 @@ const BackofficeSongsPage = () => {
             noSearchText={translate('song.noSearchText')}
             onAddOption={(option, idx, newOptions) => {
               setFilteredModal(filteredModal.filter((el) => el._id !== option._id));
-              setSelectedModal(newOptions);
+              setSelectedArtistModal(newOptions);
             }}
             onRemoveSelected={() => {
-              setSelectedModal([]);
+              setSelectedArtistModal([]);
             }}
             onSearch={(val) => {
               searchArtists(val).then((newArtists) => {
@@ -415,7 +415,7 @@ const BackofficeSongsPage = () => {
             placeholder={translate('song.artist')}
             removePlayerTooltip={null}
             results={filteredModal}
-            selectedOptions={selectedModal}
+            selectedOptions={selectedArtistModal}
             selectedOptionImageIcon="fas fa-user-music"
           />
           <div>
@@ -446,28 +446,26 @@ const BackofficeSongsPage = () => {
               setSelectedSong({ ...selectedSong, album });
             }}
           />
-          <div className="dropzone-title">
-            <h2>{translate('song.image')}</h2>
-            <Dropzone
-              value={selectedSong?.imgUrl}
-              showPreview
-              accept="image/*"
-              onFilesChange={(imgUrl) => {
-                setSelectedSong({ ...selectedSong, imgUrl });
-              }}
-            />
-          </div>
-          <div className="dropzone-title">
-            <h2>{translate('song.songUrl')}</h2>
-            <Dropzone
-              value={selectedSong?.songUrl}
-              showPreview
-              accept="audio/*"
-              onFilesChange={(songUrl) => {
-                setSelectedSong({ ...selectedSong, songUrl });
-              }}
-            />
-          </div>
+          <Dropzone
+            accept="image/*"
+            icon="far fa-file-image"
+            onFilesChange={(imgUrl) => {
+              setSelectedSong({ ...selectedSong, imgUrl });
+            }}
+            showPreview
+            text={translate('song.image')}
+            value={selectedSong?.imgUrl}
+          />
+          <Dropzone
+            accept="audio/*"
+            icon="fal fa-file-music"
+            showPreview
+            onFilesChange={(songUrl) => {
+              setSelectedSong({ ...selectedSong, songUrl });
+            }}
+            text={translate('song.songUrl')}
+            value={selectedSong?.songUrl}
+          />
         </form>
       </Modal>
     </Page>
