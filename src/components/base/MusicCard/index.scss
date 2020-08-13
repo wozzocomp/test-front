@@ -1,0 +1,13 @@
+.music-card {
+  max-width: 300px;
+  display: flex;
+  flex-flow: column;
+  margin: 0 auto;
+  .music-card-img {
+    img {
+      width: 100%;
+      height: 100%;
+      border-radius: 4px;
+    }
+  }
+}
