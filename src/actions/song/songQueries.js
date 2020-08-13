@@ -22,6 +22,24 @@ query songs(
   }
 }`;
 
+const findSongsBySearch = gql`
+  query findSongsBySearch($search: String) {
+    findSongsBySearch(search: $search) {
+      _id
+      name
+      songUrl
+      imgUrl
+      artist {
+        name
+      }
+      genre {
+        name
+      }
+    }
+  }
+`;
+
 export default {
   songs,
+  findSongsBySearch,
 };
