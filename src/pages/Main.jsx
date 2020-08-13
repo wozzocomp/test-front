@@ -31,8 +31,8 @@ import BackofficeUserRolesPage from './backoffice/UserRoles';
 import BackofficeErrorsPage from './backoffice/Errors';
 import BackofficeSongsPage from './backoffice/Song';
 import ConnectionErrorPage from './ConnectionError';
-import Search from './public/search.jsx';
-import Result from './public/results.jsx';
+import Search from './public/search';
+import Result from './public/results';
 
 const redirectBackofficeSuperadmin = (userRole, component) => {
   if (!userIsSuperadmin(userRole)) {

@@ -1,0 +1,20 @@
+@import '../../../styles/constants.scss';
+
+.results {
+  background: linear-gradient(90deg, rgba(10, 75, 62, 1) 0%, rgba(117, 214, 195, 1) 100%);
+  min-height: 100vh;
+
+  .not-found {
+    margin-top: $size-lg;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.loader {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(90deg, rgba(10, 75, 62, 1) 0%, rgba(117, 214, 195, 1) 100%);
+}
