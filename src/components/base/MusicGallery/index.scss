@@ -1,0 +1,12 @@
+@import '../../../styles/constants.scss';
+
+.music-gallery {
+  //   background: linear-gradient(90deg, rgba(10,75,62,1) 0%, rgba(117,214,195,1) 100%);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 20px;
+  margin: 0 auto;
+  width: 100%;
+  min-height: 100vh;
+  margin-top: $size-lg;
+}
