@@ -1,0 +1,20 @@
+@import '../../../styles/constants.scss';
+
+.searcher {
+  div {
+    max-width: 500px;
+  }
+
+  button {
+    border-radius: 100px;
+    padding: $size-lg;
+  }
+
+  display: flex;
+  // align-items: center;
+  justify-content: center;
+  // background-image: url('../../../assets/images/20759.jpg');
+  // background-position: center;
+  // background-repeat: no-repeat;
+  // background-size: cover;
+}
