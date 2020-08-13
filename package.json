@@ -48,7 +48,7 @@
     ]
   },
   "dependencies": {
-    "@wozzocomp/base-comps": "^1.7.3",
+    "@wozzocomp/base-comps": "^1.8.0",
     "apollo-cache-inmemory": "1.6.6",
     "apollo-client": "2.6.10",
     "apollo-link": "1.2.14",
