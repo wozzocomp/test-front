@@ -11,5 +11,5 @@ export const BACKOFFICE_SONGS_URL = `${BACKOFFICE_URL}/songs`;
 export const BACKOFFICE_USER_URL = `${BACKOFFICE_URL}/user`;
 export const BACKOFFICE_USERS_URL = `${BACKOFFICE_URL}/users`;
 export const BACKOFFICE_USER_ROLES_URL = `${BACKOFFICE_URL}/userRoles`;
-export const SEARCH_URL = '/search';
+export const SEARCH_URL = '/';
 export const RESULTS_URL = '/results';
