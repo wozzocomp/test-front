@@ -1,20 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import MusicCard from '../MusicCard';
 import './index.scss';
+import MusicCard from '../MusicCard';
 
 const MusicGallery = ({ songs }) => {
-  const songsArray = songs.map((song) => (
-    <MusicCard
-      key={song?._id}
-      img={song?.imgUrl}
-      audio={song?.songUrl}
-      alt={`${song?.name}/${song?.artist?.name}`}
-      song={song?.name}
-      artist={song?.artist?.name}
-      genre={song?.genre?.name}
-    />
-  ));
+  const [ songPlaying, setSongPlaying ] = useState({});
+
+  const changeSong = (s) => {
+    if (songPlaying?._id) {
+      const oldElem = document.getElementById(`${songPlaying.name}--${songPlaying.artist.name}`);
+      oldElem.closest('audio').pause();
+      oldElem.classList.remove('songPlaying');
+    }
+
+    setSongPlaying(s);
+  };
+
+  const songsArray = songs.map((song) => <MusicCard key={song?._id} song={song} changeSong={changeSong} />);
 
   return <div className="music-gallery">{songsArray}</div>;
 };
