@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import './index.scss';
 import { translate } from '../../../utils/translate/translator';
 
-const MusicCard = ({ song, changeSong }) => (
+const MusicCard = ({ song, onChangeSong }) => (
   <div className="music-card">
     <div className="music-card-front">
       {song ? (
@@ -28,7 +28,7 @@ const MusicCard = ({ song, changeSong }) => (
         </div>
         <div className="music-card-audio">
           {song.songUrl ? (
-            <Audio id={`${song.name}--${song.artist.name}`} onPlay={() => changeSong(song)} file={song.songUrl} />
+            <Audio id={`${song.name}--${song.artist.name}`} onPlay={() => onChangeSong(song)} file={song.songUrl} />
           ) : (
             <h1> {translate('song.audioNotFound')} </h1>
           )}
@@ -40,12 +40,12 @@ const MusicCard = ({ song, changeSong }) => (
 
 MusicCard.defaultProps = {
   song: {},
-  changeSong: null,
+  onChangeSong: null,
 };
 
 MusicCard.propTypes = {
   song: PropTypes.object,
-  changeSong: PropTypes.func,
+  onChangeSong: PropTypes.func,
 };
 
 export default MusicCard;

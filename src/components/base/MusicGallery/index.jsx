@@ -6,7 +6,7 @@ import MusicCard from '../MusicCard';
 const MusicGallery = ({ songs }) => {
   const [ songPlaying, setSongPlaying ] = useState({});
 
-  const changeSong = (s) => {
+  const onChangeSong = (s) => {
     if (songPlaying?._id) {
       const oldElem = document.getElementById(`${songPlaying.name}--${songPlaying.artist.name}`);
       oldElem.closest('audio').pause();
@@ -16,7 +16,7 @@ const MusicGallery = ({ songs }) => {
     setSongPlaying(s);
   };
 
-  const songsArray = songs.map((song) => <MusicCard key={song?._id} song={song} changeSong={changeSong} />);
+  const songsArray = songs.map((song) => <MusicCard key={song?._id} song={song} onChangeSong={onChangeSong} />);
 
   return <div className="music-gallery">{songsArray}</div>;
 };
