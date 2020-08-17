@@ -2,6 +2,7 @@ import React from 'react';
 import { Input, Button, BUTTON_TYPES } from '@wozzocomp/base-comps';
 import PropTypes from 'prop-types';
 import './index.scss';
+import { translate } from '../../../utils/translate/translator';
 
 const Searcher = ({ value, placeholder, onChange, onClick, icon, buttonType }) => (
   <div className="searcher">
@@ -14,7 +15,7 @@ const Searcher = ({ value, placeholder, onChange, onClick, icon, buttonType }) =
 
 Searcher.defaultProps = {
   value: '',
-  placeholder: 'Search your songs',
+  placeholder: translate('searcher.placeholder'),
   onChange: '',
   onClick: '',
   icon: 'fas fa-search',

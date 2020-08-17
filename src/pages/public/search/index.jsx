@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 import Searcher from '../../../components/base/Searcher';
 import { RESULTS_URL } from '../../../utils/urls';
 import './index.scss';
+import { translate } from '../../../utils/translate/translator';
 
 const Search = () => {
   const [ search, setSearch ] = useState('');
@@ -11,7 +12,7 @@ const Search = () => {
   return (
     <div className="search">
       <div className="search-text-container">
-        <h1>Some text</h1>
+        <h1>{translate('search.title')}</h1>
       </div>
       <div className="search-container">
         <Searcher
