@@ -1,17 +1,17 @@
 import React from 'react';
 import { Audio } from '@wozzocomp/base-comps';
 import PropTypes from 'prop-types';
-import { translate } from '../../../utils/translate/translator';
 import './index.scss';
+import { translate } from '../../../utils/translate/translator';
 
-const MusicCard = ({ img, alt, audio, song, artist, genre }) => (
+const MusicCard = ({ song, changeSong }) => (
   <div className="music-card">
     <div className="music-card-front">
       {song ? (
         <div className="music-card-front-content">
-          <h1>{`${translate('song.song')}: ${song}`}</h1>
-          <p>{`${translate('song.artist')}: ${artist}`}</p>
-          <p>{`${translate('song.genre')}: ${genre}`}</p>
+          <h1>{`${translate('song.song')}: ${song.name}`}</h1>
+          <p>{`${translate('song.artist')}: ${song.artist?.name}`}</p>
+          <p>{`${translate('song.genre')}: ${song.genre?.name}`}</p>
         </div>
       ) : (
         <h1> {translate('song.informationNotFound')}</h1>
@@ -20,10 +20,18 @@ const MusicCard = ({ img, alt, audio, song, artist, genre }) => (
     <div className="music-card-back">
       <div className="music-card-back-content">
         <div className="music-card-img">
-          {img ? <img src={img} alt={alt} /> : <h1> {translate('song.imageNotFound')} </h1>}
+          {song.imgUrl ? (
+            <img src={song.imgUrl} alt={`${song.name}--${song.artist.name}`} />
+          ) : (
+            <h1> {translate('song.imageNotFound')} </h1>
+          )}
         </div>
         <div className="music-card-audio">
-          {audio ? <Audio file={audio} /> : <h1> {translate('song.audioNotFound')} </h1>}
+          {song.songUrl ? (
+            <Audio id={`${song.name}--${song.artist.name}`} onPlay={() => changeSong(song)} file={song.songUrl} />
+          ) : (
+            <h1> {translate('song.audioNotFound')} </h1>
+          )}
         </div>
       </div>
     </div>
@@ -31,21 +39,13 @@ const MusicCard = ({ img, alt, audio, song, artist, genre }) => (
 );
 
 MusicCard.defaultProps = {
-  img: '',
-  alt: '',
-  audio: '',
-  song: '',
-  artist: '',
-  genre: '',
+  song: {},
+  changeSong: null,
 };
 
 MusicCard.propTypes = {
-  img: PropTypes.string,
-  alt: PropTypes.string,
-  audio: PropTypes.string,
-  song: PropTypes.string,
-  artist: PropTypes.string,
-  genre: PropTypes.string,
+  song: PropTypes.object,
+  changeSong: PropTypes.func,
 };
 
 export default MusicCard;
