@@ -13,16 +13,16 @@
     .searcher {
       .wozzo-input:focus,
       .primary-border {
-        border-color: white;
+        border-color: $white;
       }
       .wozzo-input:focus,
       .primary-color {
-        color: white;
+        color: $white;
       }
 
       .wozzo-input p,
       .wozzo-input input {
-        color: white;
+        color: $white;
         font-size: $font-sm;
       }
     }

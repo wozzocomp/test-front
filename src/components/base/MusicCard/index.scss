@@ -22,10 +22,10 @@
     backface-visibility: hidden;
     position: absolute;
     transition: transform .6s linear;
-    border: solid $size-xs white;
+    border: solid $size-xs $white;
     border-radius: $size-sm;
     background-color: $secondary;
-    color: white;
+    color: $white;
     max-width: 300px;
     height: 390px;
   }
