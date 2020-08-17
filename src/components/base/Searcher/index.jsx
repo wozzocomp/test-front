@@ -7,9 +7,7 @@ import { translate } from '../../../utils/translate/translator';
 const Searcher = ({ value, placeholder, onChange, onClick, icon, buttonType, disabled }) => (
   <div className="searcher">
     <Input value={value} placeholder={placeholder} onChange={onChange} />
-    <Button onClick={onClick} type={buttonType} disabled={disabled}>
-      <i className={icon} />
-    </Button>
+    <Button onClick={onClick} type={buttonType} disabled={disabled} iconLeft={icon} />
   </div>
 );
 
