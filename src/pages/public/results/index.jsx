@@ -38,28 +38,30 @@ const Result = () => {
         </div>
       ) : (
         <div className="results">
-          <Searcher
-            value={search}
-            onChange={(newSearch) => {
-              setSearch(newSearch);
-            }}
-            onClick={() => {
-              setLoading(true);
-              findSongsBySearch(search)
-                .then((newResults) => {
-                  setLoading(false);
-                  setResults(newResults);
-                  history.replace({
-                    pathname: RESULTS_URL,
-                    search: `?search=${search}`,
+          <div className="results-searcher">
+            <Searcher
+              value={search}
+              onChange={(newSearch) => {
+                setSearch(newSearch);
+              }}
+              onClick={() => {
+                setLoading(true);
+                findSongsBySearch(search)
+                  .then((newResults) => {
+                    setLoading(false);
+                    setResults(newResults);
+                    history.replace({
+                      pathname: RESULTS_URL,
+                      search: `?search=${search}`,
+                    });
+                  })
+                  .catch(() => {
+                    setLoading(false);
+                    showErrorToast(translate('song.updateKo'));
                   });
-                })
-                .catch(() => {
-                  setLoading(false);
-                  showErrorToast(translate('song.updateKo'));
-                });
-            }}
-          />
+              }}
+            />
+          </div>
           {results.length ? (
             <MusicGallery songs={results} />
           ) : (
