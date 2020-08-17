@@ -1,14 +1,36 @@
 @import '../../../styles/constants.scss';
 
 .results {
-  background: linear-gradient(90deg, rgba(10, 75, 62, 1) 0%, rgba(117, 214, 195, 1) 100%);
+  background: linear-gradient(90deg, $primary-darker 0%, $primary-lighter 100%);
   min-height: 100vh;
+  width: 100%;
+  position: absolute;
+  top: 0;
+
+  .results-searcher {
+    margin: $size-xl auto;
+
+    .searcher {
+      .wozzo-input:focus, .primary-border {
+          border-color: white;
+      }
+      .wozzo-input:focus, .primary-color {
+        color: white;
+    }
+    
+    .wozzo-input p, .wozzo-input input {
+      color: white;
+      font-size: 16px;
+    }
+    }
+  }
 
   .not-found {
     margin-top: $size-lg;
     display: flex;
     justify-content: center;
   }
+
 }
 
 .loader {
@@ -16,5 +38,5 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(90deg, rgba(10, 75, 62, 1) 0%, rgba(117, 214, 195, 1) 100%);
+  background: linear-gradient(90deg, $primary-darker 0%, $primary-lighter 100%);
 }
