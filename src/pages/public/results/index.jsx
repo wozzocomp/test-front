@@ -29,7 +29,7 @@ const Result = () => {
   }, []);
 
   return (
-    <div>
+    <>
       {loading ? (
         <div className="loading">
           <Loading />
@@ -70,7 +70,7 @@ const Result = () => {
           )}
         </div>
       )}
-    </div>
+    </>
   );
 };
 
