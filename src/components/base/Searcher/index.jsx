@@ -4,31 +4,33 @@ import PropTypes from 'prop-types';
 import './index.scss';
 import { translate } from '../../../utils/translate/translator';
 
-const Searcher = ({ value, placeholder, onChange, onClick, icon, buttonType }) => (
+const Searcher = ({ value, placeholder, onChange, onClick, icon, buttonType, disabled }) => (
   <div className="searcher">
     <Input value={value} placeholder={placeholder} onChange={onChange} />
-    <Button onClick={onClick} type={buttonType}>
+    <Button onClick={onClick} type={buttonType} disabled={disabled}>
       <i className={icon} />
     </Button>
   </div>
 );
 
 Searcher.defaultProps = {
-  value: '',
-  placeholder: translate('searcher.placeholder'),
+  buttonType: BUTTON_TYPES.secondary,
+  disabled: false,
+  icon: 'fas fa-search',
   onChange: '',
   onClick: '',
-  icon: 'fas fa-search',
-  buttonType: BUTTON_TYPES.secondary,
+  placeholder: translate('searcher.placeholder'),
+  value: '',
 };
 
 Searcher.propTypes = {
-  value: PropTypes.string,
-  placeholder: PropTypes.string,
+  buttonType: PropTypes.string,
+  disabled: PropTypes.bool,
+  icon: PropTypes.string,
   onChange: PropTypes.func,
   onClick: PropTypes.func,
-  icon: PropTypes.string,
-  buttonType: PropTypes.string,
+  placeholder: PropTypes.string,
+  value: PropTypes.string,
 };
 
 export default Searcher;
