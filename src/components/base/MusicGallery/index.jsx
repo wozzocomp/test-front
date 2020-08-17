@@ -4,12 +4,15 @@ import MusicCard from '../MusicCard';
 import './index.scss';
 
 const MusicGallery = ({ songs }) => {
-  const songsArray = songs.map((element) => (
+  const songsArray = songs.map((song) => (
     <MusicCard
-      key={element._id}
-      img={element.imgUrl}
-      audio={element.songUrl}
-      alt={`${element.name}/${element.artist.name}`}
+      key={song?._id}
+      img={song?.imgUrl}
+      audio={song?.songUrl}
+      alt={`${song?.name}/${song?.artist?.name}`}
+      song={song?.name}
+      artist={song?.artist?.name}
+      genre={song?.genre?.name}
     />
   ));
 
