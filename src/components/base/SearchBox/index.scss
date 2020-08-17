@@ -1,7 +1,6 @@
 @import '../../../styles/constants.scss';
 
 .searcher {
-
   display: flex;
   justify-content: center;
 
@@ -18,9 +17,9 @@
     transition: all 1s ease;
   }
 
-  i{
+  i {
     color: $secondary;
-    transition: all .5s ease;
+    transition: all 0.5s ease;
   }
 
   button:hover {
@@ -28,7 +27,6 @@
   }
 
   button:hover i {
-    color:$white
+    color: $white;
   }
-
 }

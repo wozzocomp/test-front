@@ -4,14 +4,14 @@ import PropTypes from 'prop-types';
 import './index.scss';
 import { translate } from '../../../utils/translate/translator';
 
-const Searcher = ({ value, placeholder, onChange, onClick, icon, buttonType, disabled }) => (
+const SearchBox = ({ value, placeholder, onChange, onClick, icon, buttonType, disabled }) => (
   <div className="searcher">
     <Input value={value} placeholder={placeholder} onChange={onChange} />
     <Button onClick={onClick} type={buttonType} disabled={disabled} iconLeft={icon} />
   </div>
 );
 
-Searcher.defaultProps = {
+SearchBox.defaultProps = {
   buttonType: BUTTON_TYPES.secondary,
   disabled: false,
   icon: 'fas fa-search',
@@ -21,7 +21,7 @@ Searcher.defaultProps = {
   value: '',
 };
 
-Searcher.propTypes = {
+SearchBox.propTypes = {
   buttonType: PropTypes.string,
   disabled: PropTypes.bool,
   icon: PropTypes.string,
@@ -31,4 +31,4 @@ Searcher.propTypes = {
   value: PropTypes.string,
 };
 
-export default Searcher;
+export default SearchBox;

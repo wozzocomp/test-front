@@ -7,7 +7,7 @@ import { RESULTS_URL } from '../../../utils/urls';
 import { translate } from '../../../utils/translate/translator';
 import Loading from '../../../components/base/Loading';
 import MusicGallery from '../../../components/base/MusicGallery';
-import Searcher from '../../../components/base/Searcher';
+import SearchBox from '../../../components/base/SearchBox';
 
 const Result = () => {
   const [ results, setResults ] = useState([]);
@@ -37,7 +37,7 @@ const Result = () => {
       ) : (
         <div className="results">
           <div className="results-searcher">
-            <Searcher
+            <SearchBox
               value={search}
               onChange={(newSearch) => {
                 setSearch(newSearch);
