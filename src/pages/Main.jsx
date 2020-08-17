@@ -82,10 +82,10 @@ const Main = ({ initialize, loading, noConnection, userRole, user }) => {
                   <Route exact path={SEARCH_URL}>
                     <Search />
                   </Route>
-                  <Route path={RESULTS_URL}>
+                  <Route exact path={RESULTS_URL}>
                     <Result />
                   </Route>
-                  <Route path={LOGIN_URL}>
+                  <Route exact path={LOGIN_URL}>
                     <Login />
                   </Route>
                   <Route exact path={INDEX_URL} render={() => redirectPublic(userRole, LoginPage)} />
