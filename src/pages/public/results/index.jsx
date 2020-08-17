@@ -31,8 +31,7 @@ const Result = () => {
   return (
     <div>
       {loading ? (
-        <div className="loader">
-          {' '}
+        <div className="loading">
           <Loading />
         </div>
       ) : (
