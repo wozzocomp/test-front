@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import Searcher from '../../../components/base/Searcher';
-import { RESULTS_URL } from '../../../utils/urls';
 import './index.scss';
+import { RESULTS_URL } from '../../../utils/urls';
 import { translate } from '../../../utils/translate/translator';
+import Searcher from '../../../components/base/Searcher';
 
 const Search = () => {
   const [ search, setSearch ] = useState('');
@@ -26,6 +26,7 @@ const Search = () => {
               search: `?search=${search}`,
             });
           }}
+          disabled={!search.trim().length}
         />
       </div>
     </div>

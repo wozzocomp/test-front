@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { useLocation, useHistory } from 'react-router-dom';
 import { AlertBox } from '@wozzocomp/base-comps';
+import { useLocation, useHistory } from 'react-router-dom';
 import './index.scss';
 import { findSongsBySearch } from '../../../actions/song';
 import { RESULTS_URL } from '../../../utils/urls';
 import { translate } from '../../../utils/translate/translator';
+import Loading from '../../../components/base/Loading';
 import MusicGallery from '../../../components/base/MusicGallery';
 import Searcher from '../../../components/base/Searcher';
-import Loading from '../../../components/base/Loading';
-import { showErrorToast } from '../../../utils/toasts';
 
 const Result = () => {
   const [ results, setResults ] = useState([]);
@@ -57,9 +56,10 @@ const Result = () => {
                   })
                   .catch(() => {
                     setLoading(false);
-                    showErrorToast(translate('song.updateKo'));
+                    setResults([]);
                   });
               }}
+              disabled={!search.trim().length}
             />
           </div>
           {results.length ? (
