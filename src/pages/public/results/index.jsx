@@ -61,7 +61,7 @@ const Result = () => {
               disabled={!search.trim().length}
             />
           </div>
-          {results.length ? (
+          {results?.length ? (
             <MusicGallery songs={results} />
           ) : (
             <div className="not-found">
