@@ -1,3 +1,5 @@
+@import '../../../styles/constants.scss';
+
 .search {
   min-height: 100vh;
   display: flex;
@@ -12,18 +14,18 @@
   .search-text-container {
     max-width: 450px;
     text-align: center;
-    animation: fade-in 1s ease-out 0.5s;
+    animation: fade-in $transition-super-slow ease-out $transition-slow;
     animation-fill-mode: backwards;
     
     h1 {
       text-transform: uppercase;
-      letter-spacing: 5px;
-      font-size: 40px;
+      letter-spacing: $size-sm;
+      font-size: $font-title;
     }
   }
 
   .search-container {
-    animation: fade-up 1s ease-out 0.5s;
+    animation: fade-up $transition-super-slow ease-out $transition-slow;
     animation-fill-mode: backwards;
   }
 }
