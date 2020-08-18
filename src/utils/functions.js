@@ -118,3 +118,5 @@ export const cleanUrl = (text) =>
     .replace(/\s{2,}/g, ' ') // double space to single space
     .replace(/\s/g, '-') // single space to _
     .replace(/[^a-z0-9-]+/g, '');
+
+export const createSearchUrl = (search) => `?search=${search}`;

@@ -8,6 +8,7 @@ import { translate } from '../../../utils/translate/translator';
 import Loading from '../../../components/base/Loading';
 import MusicGallery from '../../../components/base/MusicGallery';
 import SearchBox from '../../../components/base/SearchBox';
+import { createSearchUrl } from '../../../utils/functions';
 
 const Result = () => {
   const [ results, setResults ] = useState([]);
@@ -25,7 +26,7 @@ const Result = () => {
         setResults(newResults);
         history.replace({
           pathname: RESULTS_URL,
-          search: `?search=${search}`,
+          search: createSearchUrl(search),
         });
       })
       .catch(() => {

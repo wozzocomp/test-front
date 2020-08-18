@@ -4,6 +4,7 @@ import './index.scss';
 import { RESULTS_URL } from '../../../utils/urls';
 import { translate } from '../../../utils/translate/translator';
 import SearchBox from '../../../components/base/SearchBox';
+import { createSearchUrl } from '../../../utils/functions';
 
 const Search = () => {
   const [ search, setSearch ] = useState('');
@@ -12,7 +13,7 @@ const Search = () => {
   const onSearch = () => {
     history.push({
       pathname: RESULTS_URL,
-      search: `?search=${search}`,
+      search: createSearchUrl(search),
     });
   };
 
