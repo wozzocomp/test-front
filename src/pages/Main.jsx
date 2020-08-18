@@ -7,7 +7,6 @@ import NotFoundPage from './NotFound';
 import LoginPage from '../containers/login';
 import Loading from '../components/base/Loading';
 import {
-  INDEX_URL,
   LOGIN_URL,
   BACKOFFICE_URL,
   BACKOFFICE_ARTISTS_URL,
@@ -33,7 +32,6 @@ import BackofficeSongsPage from './backoffice/Song';
 import ConnectionErrorPage from './ConnectionError';
 import Search from './public/search';
 import Result from './public/results';
-import Login from './Login';
 
 const redirectBackofficeSuperadmin = (userRole, component) => {
   if (!userIsSuperadmin(userRole)) {
@@ -85,10 +83,7 @@ const Main = ({ initialize, loading, noConnection, userRole, user }) => {
                   <Route exact path={RESULTS_URL}>
                     <Result />
                   </Route>
-                  <Route exact path={LOGIN_URL}>
-                    <Login />
-                  </Route>
-                  <Route exact path={INDEX_URL} render={() => redirectPublic(userRole, LoginPage)} />
+                  <Route exact path={LOGIN_URL} render={() => redirectPublic(userRole, LoginPage)} />
                   <Route exact path={BACKOFFICE_URL} render={() => redirectBackoffice(userRole, MainBackofficePage)} />
                   <Route
                     exact

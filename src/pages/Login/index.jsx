@@ -5,7 +5,7 @@ import { Input, INPUT_TYPES, Button, BUTTON_TYPES, ErrorBox } from '@wozzocomp/b
 import './index.scss';
 import { translate } from '../../utils/translate/translator';
 import logo from '../../assets/images/wozzoFacebook.png';
-import { INDEX_URL } from '../../utils/urls';
+import { SEARCH_URL } from '../../utils/urls';
 import { validateEmail, validatePassword } from '../../utils/validator';
 import Loading from '../../components/base/Loading';
 import { showErrorToast } from '../../utils/toasts';
@@ -51,7 +51,7 @@ const LoginPage = ({ login }) => {
 
   return (
     <div id="login-page">
-      <Button to={INDEX_URL} type={BUTTON_TYPES.transparent}>
+      <Button to={SEARCH_URL} type={BUTTON_TYPES.transparent}>
         <img src={logo} alt={translate('common.brandName')} />
       </Button>
       <form className="login-form shadow">
