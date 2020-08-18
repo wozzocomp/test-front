@@ -4,6 +4,8 @@ import error from './en/error.json';
 import genre from './en/genre.json';
 import language from './en/language.json';
 import navbar from './en/navbar.json';
+import search from './en/search.json';
+import searcher from './en/searcher.json';
 import song from './en/song.json';
 import user from './en/user.json';
 import userRole from './en/userRole.json';
@@ -15,6 +17,8 @@ const translations = {
   genre,
   language,
   navbar,
+  search,
+  searcher,
   song,
   user,
   userRole,

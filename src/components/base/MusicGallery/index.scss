@@ -1,0 +1,7 @@
+@import '../../../styles/constants.scss';
+
+.music-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}

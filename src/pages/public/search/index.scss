@@ -1,0 +1,66 @@
+@import '../../../styles/constants.scss';
+
+.search {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url('../../../assets/images/searchBackground.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  flex-flow: column;
+
+  .search-text-container {
+    max-width: 450px;
+    text-align: center;
+    animation: fade-in $transition-super-slow ease-out $transition-slow;
+    animation-fill-mode: backwards;
+    
+    h1 {
+      text-transform: uppercase;
+      letter-spacing: $size-sm;
+      font-size: $font-title;
+    }
+  }
+
+  .search-container {
+    animation: fade-up $transition-super-slow ease-out $transition-slow;
+    animation-fill-mode: backwards;
+  }
+}
+
+
+@keyframes fade-in {
+
+  0% {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+
+  75%{
+    transform: translateX(40px);
+  }
+
+  100%{
+    opacity: 1;
+    transform: translateX(0)
+  }
+}
+
+@keyframes fade-up {
+
+  0% {
+    opacity: 0;
+    transform:  translateY(-40px);
+  }
+
+  75%{
+    transform: translateY(20px);
+  }
+
+  100%{
+    opacity: 1;
+    transform: translate(0)
+  }
+}

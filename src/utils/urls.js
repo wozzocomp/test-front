@@ -1,6 +1,7 @@
 // PUBLIC
-export const INDEX_URL = '/';
 export const LOGIN_URL = '/login';
+export const SEARCH_URL = '/';
+export const RESULTS_URL = '/results';
 
 // BACKOFFICE
 export const BACKOFFICE_URL = '/backoffice';

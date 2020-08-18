@@ -1,5 +1,6 @@
 import gql from 'graphql-tag';
 import song from '../../utils/types/song';
+import publicSong from '../../utils/types/publicSong';
 
 const songs = gql`
 query songs(
@@ -22,6 +23,15 @@ query songs(
   }
 }`;
 
+const findSongsBySearch = gql`
+  query findSongsBySearch($search: String!) {
+    findSongsBySearch(search: $search) {
+      ${publicSong}
+    }
+  }
+`;
+
 export default {
   songs,
+  findSongsBySearch,
 };

@@ -1,0 +1,45 @@
+@import '../../../styles/constants.scss';
+
+.results {
+  background: linear-gradient(90deg, $primary-darker 0%, $primary-lighter 100%);
+  min-height: 100vh;
+  width: 100%;
+  position: absolute;
+  top: 0;
+
+  .results-searcher {
+    margin: $size-xl auto;
+
+    .searcher {
+      .wozzo-input:focus,
+      .primary-border {
+        border-color: $white;
+      }
+      .wozzo-input:focus,
+      .primary-color {
+        color: $white;
+      }
+
+      .wozzo-input p,
+      .wozzo-input input {
+        color: $white;
+        font-size: $font-sm;
+      }
+    }
+  }
+
+  .not-found {
+    margin-top: $size-lg;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.loading {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(90deg, $primary-darker 0%, $primary-lighter 100%);
+}

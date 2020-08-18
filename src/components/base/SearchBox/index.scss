@@ -1,0 +1,32 @@
+@import '../../../styles/constants.scss';
+
+.searcher {
+  display: flex;
+  justify-content: center;
+
+  div {
+    max-width: 500px;
+  }
+
+  button {
+    border-radius: 100px;
+    padding: $size-lg;
+    background: linear-gradient(to right, $secondary 50%, $white 50%);
+    background-size: 200% 100%;
+    background-position: right bottom;
+    transition: all 1s ease;
+  }
+
+  i {
+    color: $secondary;
+    transition: all 0.5s ease;
+  }
+
+  button:hover {
+    background-position: left bottom;
+  }
+
+  button:hover i {
+    color: $white;
+  }
+}

@@ -112,6 +112,17 @@ export const searchSongByFilter = ({ _id, name, artist, genre, album, active, de
       });
   });
 
+export const findSongsBySearch = (search) =>
+  new Promise((resolve, reject) => {
+    apolloQuery(songQueries.findSongsBySearch, { search })
+      .then((response) => {
+        resolve(response.data.findSongsBySearch);
+      })
+      .catch((error) => {
+        reject(error);
+      });
+  });
+
 export const updateSong = (song, imgUrl, songUrl) =>
   new Promise((resolve, reject) => {
     if (!song || !song._id) {

@@ -7,7 +7,7 @@ import './index.scss';
 
 import { translate } from '../../../utils/translate/translator';
 import SidebarLink from './sidebarLink';
-import { BACKOFFICE_URL, INDEX_URL, BACKOFFICE_USER_URL } from '../../../utils/urls';
+import { BACKOFFICE_URL, BACKOFFICE_USER_URL, SEARCH_URL } from '../../../utils/urls';
 import { logout } from '../../../utils/tokenAuth';
 import { userIsSuperadmin } from '../../../utils/functions';
 import { ELEMENTS, SUPERADMIN_ELEMS } from '../../../utils/backofficeElements';
@@ -43,7 +43,7 @@ const Sidebar = ({ userRole }) => {
         </div>
         <div>
           <SidebarLink icon="fas fa-user" text={translate('navbar.user')} url={BACKOFFICE_USER_URL} />
-          <SidebarLink icon="fas fa-sign-out-alt" onClick={logout} text={translate('navbar.logout')} url={INDEX_URL} />
+          <SidebarLink icon="fas fa-sign-out-alt" onClick={logout} text={translate('navbar.logout')} url={SEARCH_URL} />
         </div>
       </div>
     </div>
