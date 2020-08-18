@@ -24,7 +24,7 @@ query songs(
 }`;
 
 const findSongsBySearch = gql`
-  query findSongsBySearch($search: String) {
+  query findSongsBySearch($search: String!) {
     findSongsBySearch(search: $search) {
       ${publicSong}
     }
