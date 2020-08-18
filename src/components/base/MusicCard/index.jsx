@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React from 'react';
 import { Audio } from '@wozzocomp/base-comps';
 import PropTypes from 'prop-types';
@@ -19,12 +20,8 @@ const MusicCard = ({ song, onChangeSong }) => (
     </div>
     <div className="music-card-back">
       <div className="music-card-back-content">
-        <div className="music-card-img">
-          {song.imgUrl ? (
-            <img src={song.imgUrl} alt={`${song.name}--${song.artist.name}`} />
-          ) : (
-            <h1> {translate('song.imageNotFound')} </h1>
-          )}
+        <div className="music-card-img" style={{ backgroundImage: `url(${song.imgUrl})` }}>
+          {!song.imgUrl ? <h1> {translate('song.imageNotFound')} </h1> : null}
         </div>
         <div className="music-card-audio">
           {song.songUrl ? (

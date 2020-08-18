@@ -1,44 +1,42 @@
 @import '../../../styles/constants.scss';
 
 .music-card {
-  width: 300px;
-  height: 390px;
   display: flex;
   flex-flow: column;
   margin: 0 auto;
   cursor: pointer;
   text-align: center;
+  padding: 20px;
 
   .music-card-img {
-    
-    img {
-      width: 100%;
-      border-radius: $size-sm;
-    }
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 0;
+    padding-bottom: 100%;
   }
 
-  .music-card-back,.music-card-front {
+  .music-card-back,
+  .music-card-front {
     overflow: hidden;
     backface-visibility: hidden;
-    position: absolute;
-    transition: transform .6s linear;
+    transition: transform 0.6s linear;
     border: solid $size-xs $white;
     border-radius: $size-sm;
     background-color: $secondary;
     color: $white;
-    max-width: 300px;
-    height: 390px;
+    width: 300px;
   }
 
   .music-card-back {
     transform: perspective(600px) rotateY(180deg);
- 
+    position: absolute;
   }
   .music-card-front {
     transform: perspective(600px) rotateY(0deg);
+    position: relative;
+    height: 390px;
 
-
-    .music-card-front-content{ 
+    .music-card-front-content {
       h1 {
         padding: $size-md;
       }
