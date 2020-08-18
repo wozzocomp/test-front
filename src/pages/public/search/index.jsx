@@ -9,6 +9,13 @@ const Search = () => {
   const [ search, setSearch ] = useState('');
   const history = useHistory();
 
+  const onSearch = () => {
+    history.push({
+      pathname: RESULTS_URL,
+      search: `?search=${search}`,
+    });
+  };
+
   return (
     <div className="search">
       <div className="search-text-container">
@@ -20,12 +27,8 @@ const Search = () => {
           onChange={(newSearch) => {
             setSearch(newSearch);
           }}
-          onClick={() => {
-            history.push({
-              pathname: RESULTS_URL,
-              search: `?search=${search}`,
-            });
-          }}
+          onClick={onSearch}
+          onEnter={onSearch}
           disabled={!search.trim().length}
         />
       </div>

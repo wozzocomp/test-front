@@ -17,6 +17,23 @@ const Result = () => {
   const location = useLocation();
   const searchParam = new URLSearchParams(location.search).get('search');
 
+  const onSearch = () => {
+    setLoading(true);
+    findSongsBySearch(search)
+      .then((newResults) => {
+        setLoading(false);
+        setResults(newResults);
+        history.replace({
+          pathname: RESULTS_URL,
+          search: `?search=${search}`,
+        });
+      })
+      .catch(() => {
+        setLoading(false);
+        setResults([]);
+      });
+  };
+
   useEffect(() => {
     if (searchParam) {
       setLoading(true);
@@ -42,22 +59,8 @@ const Result = () => {
               onChange={(newSearch) => {
                 setSearch(newSearch);
               }}
-              onClick={() => {
-                setLoading(true);
-                findSongsBySearch(search)
-                  .then((newResults) => {
-                    setLoading(false);
-                    setResults(newResults);
-                    history.replace({
-                      pathname: RESULTS_URL,
-                      search: `?search=${search}`,
-                    });
-                  })
-                  .catch(() => {
-                    setLoading(false);
-                    setResults([]);
-                  });
-              }}
+              onClick={onSearch}
+              onEnter={onSearch}
               disabled={!search.trim().length}
             />
           </div>
